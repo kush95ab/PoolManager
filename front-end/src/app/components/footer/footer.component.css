@@ -1,0 +1,17 @@
+.container-fluid {
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(88, 97, 105);
+}
+footer {
+    background-color: #3e3ee9;
+    color: #f5f5f5;
+    padding: 32px;
+  }
+  footer a {
+    color: #f5f5f5;
+  }
+  footer a:hover {
+    color: #777;
+    text-decoration: none;
+  }  

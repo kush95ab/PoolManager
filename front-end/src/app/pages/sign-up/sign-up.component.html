@@ -1,0 +1,239 @@
+<!-- Profile page content -->
+
+<!-- Container (TOUR Section) -->
+<div *ngIf="!choosen" id="tour" class="bg-1">
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <!-- <img src="paris.jpg" alt="Paris" width="400" height="300"> -->
+                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="studentsignup()">Students</button>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <!-- <img src="newyork.jpg" alt="New York" width="400" height="300"> -->
+                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="coachsignup()">Coach</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <!-- <img src="sanfran.jpg" alt="San Francisco" width="400" height="300"> -->
+                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="poolmanagersignup()">Pool
+                        Manager</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="choosen" class="container-fluid my-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-1">REGISTRATION FORM</h2>
+            <p>Please enter your user information.</p>
+        </div>
+        <form class="row" #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" ngNativeValidate>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 px-5">
+                <div class="mx-auto mt-4 border" style="width: 200px; height: 200px; overflow: hidden;">
+                    <img src="{{imageAddress}}" width="200" />
+                </div>
+
+                <label class="btn btn-default mt-2">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <button class="btn btn-success btn-block" [disabled]="!selectedFiles"
+                    (click)="uploadFile()">Upload</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="card-body">
+
+                    <!-- coach or poolmanger signup -->
+                    <div *ngIf="Coachsignup||Poolmanagersignup">
+                        <div class="form-group">
+                            <input [(ngModel)]="nic" name="nic" type="text" class="form-control form-control-lg"
+                                placeholder="NIC Number" required="true" title="Enter your NIC number"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <!-- student signup -->
+                    <div *ngIf="Studentsignup">
+                        <div class="form-group">
+                            <input [(ngModel)]="indexNumber" name="indexNumber" type="text"
+                                class="form-control form-control-lg" placeholder="Index Number" required="true"
+                                title="Enter your first name" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="fname" name="fname" type="text" class="form-control form-control-lg"
+                            placeholder="First Name" required="true" title="Enter your first name" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="lname" name="lname" type="text" class="form-control form-control-lg"
+                            placeholder="Last Name" required="false" title="Enter your last name" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="fullname" name="fullname" type="text" class="form-control form-control-lg"
+                            placeholder="Full Name" required="true" title="Enter your Full name "
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <input [(ngModel)]="dob" name="dob" type="date" class="form-control form-control-lg"
+                            placeholder="Date Of Birth" required="false" title="Enter your birthday"
+                            autocomplete="off" />
+                    </div>
+
+
+                    <label>Gender</label>
+                    <div class="form-group">
+                        <div class="row px-2">
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="gender" id="male"
+                                    autocomplete="off">
+                                <span class="custom-control-label"> Male</span>
+                            </label>
+
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="gender" id="female"
+                                    autocomplete="off">
+                                <span class="custom-control-label"> Female </span>
+                            </label>
+                            <br />
+                        </div>
+                    </div>
+
+                    <!-- coach signp part -->
+                    <div *ngIf="Coachsignup">
+                        <div class="form-group">
+                            <input [(ngModel)]="occupation" type="text" class="form-control" name="occupation"
+                                id="occupation" placeholder="Enter Your occupation">
+                        </div>
+                    </div>
+                    <div *ngIf="Coachsignup || Poolmanagersignup ">
+                        <div class="form-group">
+                            <textarea [(ngModel)]="experience" class="form-control" name="experience" id="experience"
+                                rows="3" placeholder="Enter Your Experiences"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- student signup -->
+                    <div *ngIf="Studentsignup">
+                        <div class="form-group">
+                            <input [(ngModel)]="school" name="school" type="text" class="form-control form-control-lg"
+                                placeholder="Enter Your School Name" required="false" title="Enter Your School Name"
+                                autocomplete="off" />
+                        </div>
+                        <label>Grade</label>
+                        <select id="grade" name="grade" autocomplete="off" required="false">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+
+                        </select>
+                        <br />
+
+                        <div class="form-group">
+                            <input [(ngModel)]="parentname" name="parentname" type="text"
+                                class="form-control form-control-lg" placeholder="Enter Parent Name" required="false"
+                                title="Enter Parent Name" autocomplete="off" />
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input [(ngModel)]="address" name="address" type="text" class="form-control form-control-lg"
+                            placeholder="Address" required="false" title="Enter your address" autocomplete="off" />
+                    </div>
+
+                    <div class="form-group pt-2">
+                        <!-- <button class="btn btn-block btn-primary" type="submit">Register My Account</button> -->
+                        <input [(ngModel)]="email" name="email" type="email" class="form-control form-control-lg"
+                            placeholder="Email" required="false"
+                            pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$"
+                            title="Enter your email address" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="cellphone" name="cellphone" type="tel" pattern="^\d{10}$"
+                            class="form-control form-control-lg" placeholder="mobile Number" required="false"
+                            title="Enter your mobile number" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="fixedphone" name="fixedphone" type="tel" pattern="^\d{10}$"
+                            class="form-control form-control-lg" placeholder="Fixed Number" required="false"
+                            title="Enter your Fixed number" autocomplete="off" />
+                    </div>
+                     <div class="form-group">
+                        <input [(ngModel)]="description" name="description" type="text"
+                            class="form-control form-control-lg" placeholder="Status" required="false"
+                            title="Enter your status" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="card-body">
+                    <!-- <div class="form-group">
+                        <div class="row px-3">
+                            <label class="col-4 custom-control custom-radio">
+                                <input class="custom-control-input" name="regType" type="radio"
+                                    (click)="setUserType('S')" required><span class="custom-control-label"> Student
+                                </span>
+                            </label>
+                            <label class="col-4 custom-control custom-radio">
+                                <input class="custom-control-input" name="regType" type="radio"
+                                    (click)="setUserType('M')" required><span class="custom-control-label"> Coach
+                                </span>
+                            </label>
+                            <label class="col-4 custom-control custom-radio">
+                                <input class="custom-control-input" name="regType" type="radio"
+                                    (click)="setUserType('CA')" required><span class="custom-control-label"> Pool
+                                    Manager </span>
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <input [(ngModel)]="username" class="form-control form-control-lg" type="text" name="username"
+                            required="true" placeholder="Username" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="password" class="form-control form-control-lg" id="pass1" type="password"
+                            name="password" required="true" placeholder="Password" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="confirm" class="form-control form-control-lg" required="true"
+                            type="password" name="confirm" placeholder="Confirm Password" autocomplete="off">
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By
+                                creating
+                                an account, you agree the <a href="#">terms and conditions</a></span>
+                        </label>
+                    </div> -->
+                    <div class="form-group pt-2">
+                        <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+                    </div>
+
+                    <div class="mb-3 bg-white">
+                        <p>Already member? <a href="/login" class="text-secondary">Login Here.</a></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

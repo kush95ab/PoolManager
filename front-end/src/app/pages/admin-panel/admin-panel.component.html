@@ -1,0 +1,306 @@
+<!-- main wrapper  -->
+<div class="dashboard-main-wrapper">
+    <!-- navbar -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="#">Ement - Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>`
+        </nav>
+    </div>
+    <!-- end navbar -->
+
+    <!-- left sidebar -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+                        <li class="nav-item ">
+                            <button class="nav-link btn-block" (click)="activateDashboard()"><i class="fa fa-fw fa-user-circle"></i>Dashboard</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn-block" (click)="activateCompanies()"><i class="fa fa-fw fa-rocket"></i>Companies</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn-block" (click)="activateMentors()"><i class="fas fa-fw fa-chart-pie"></i>Mentors</button>
+                        </li>
+                        <li class="nav-item ">
+                            <button class="nav-link btn-block" (click)="activateStudents()"><i class="fab fa-fw fa-wpforms"></i>Students</button>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <button class="nav-link btn-block" (click)="activateNotifications()"><i class="fas fa-fw fa-table"></i>Notifications</button>
+                        </li> -->
+                        <li class="nav-item">
+                            <button class="nav-link btn-block" (click)="logout()"><i class="fas fa-fw fa-table"></i>Logout</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- end left sidebar -->
+
+    <!-- wrapper  -->
+    <div class="dashboard-wrapper">
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+                <!-- pageheader  -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">EMENT {{title}}</h2>
+                            <hr class="line">
+                        </div>
+                    </div>
+                </div>
+                <!-- end pageheader  -->
+
+                <!-- dashboard content -->
+                <div *ngIf="dashboardActive" class="ecommerce-widget">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Companies</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">{{companyList.length}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Mentors</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">{{mentorList.length}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Students</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">{{studentList.length}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Notifications</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">10</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end dashboard content -->
+
+                <!-- companies content -->
+                <div *ngIf="companiesActive" class="ecommerce-widget">
+                    <div class="row">
+                        <!-- company table  -->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Registered Companies</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">ID</th>
+                                                    <th class="border-0">Name</th>
+                                                    <th class="border-0">Address</th>
+                                                    <th class="border-0">Phone</th>
+                                                    <th class="border-0">Email</th>
+                                                    <th class="border-0">Description</th>
+                                                    <th class="border-0 ">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let company of companyList">
+                                                    <td>{{company.companyId}}</td>
+                                                    <td>{{company.companyName}}</td>
+                                                    <td>{{company.companyAddress}}</td>
+                                                    <td>{{company.companyPhone}}</td>
+                                                    <td>{{company.companyEmail}}</td>
+                                                    <td>{{company.companyDescription}}</td>
+                                                    <td><button class="btn btn-danger rounded">DELETE</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end company table  -->
+                    </div>
+                </div>
+                <!-- end companies content -->
+
+                <!-- mentors content -->
+                <div *ngIf="mentorsActive" class="ecommerce-widget">
+                    <div class="row">
+                        <!-- mentor table  -->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Registered Mentors</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">ID</th>
+                                                    <th class="border-0">First Name</th>
+                                                    <th class="border-0">Last Name</th>
+                                                    <th class="border-0">Address</th>
+                                                    <th class="border-0">Phone</th>
+                                                    <th class="border-0">Email</th>
+                                                    <th class="border-0">Description</th>
+                                                    <th class="border-0 ">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let mentor of mentorList">
+                                                    <td>{{mentor.mentorId}}</td>
+                                                    <td>{{mentor.mentorFname}}</td>
+                                                    <td>{{mentor.mentorLname}}</td>
+                                                    <td>{{mentor.mentorAddress}}</td>
+                                                    <td>{{mentor.mentorPhone}}</td>
+                                                    <td>{{mentor.mentorEmail}}</td>
+                                                    <td>{{mentor.mentorDescription}}</td>
+                                                    <td><button class="btn btn-danger rounded" (click)="deleteUser(mentor.mentorId)">DELETE</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end company table  -->
+                    </div>
+                </div>
+                <!-- end mentors content -->
+
+                <!-- students content -->
+                <div *ngIf="studentsActive" class="ecommerce-widget">
+                    <div class="row">
+                        <!-- mentor table  -->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Registered Students</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">ID</th>
+                                                    <th class="border-0">First Name</th>
+                                                    <th class="border-0">Last Name</th>
+                                                    <th class="border-0">Address</th>
+                                                    <th class="border-0">Phone</th>
+                                                    <th class="border-0">Email</th>
+                                                    <th class="border-0">Description</th>
+                                                    <th class="border-0 ">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let student of studentList">
+                                                    <td>{{student.studentId}}</td>
+                                                    <td>{{student.studentFname}}</td>
+                                                    <td>{{student.studentLname}}</td>
+                                                    <td>{{student.studentAddress}}</td>
+                                                    <td>{{student.studentPhone}}</td>
+                                                    <td>{{student.studentEmail}}</td>
+                                                    <td>{{student.studentDescription}}</td>
+                                                    <td><button class="btn btn-danger rounded" (click)="deleteUser(student.studentId)">DELETE</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end company table  -->
+                    </div>
+                </div>
+                <!-- end students content -->
+
+                <!-- notifications content -->
+                <div *ngIf="notificationsActive" class="ecommerce-widget">
+                    <div class="row">
+                        <!-- notification table  -->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Recent Orders</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">Title</th>
+                                                    <th class="border-0">body</th>
+                                                    <th class="border-0">time</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Project Idea</td>
+                                                    <td>A traffic light system project idea added by senio mentor cambio</td>
+                                                    <td>5 days </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>Project succeeded</td>
+                                                    <td>dimento project has been successfully done by supersix team</td>
+                                                    <td>2 days ago </td>
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <td>want a student </td>
+                                                    <td>there is a vacency for a student to join eclipse project </td>
+                                                    <td>1 day ago</td>
+                                                </tr>
+                                               
+                                                <tr>
+                                                    <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View
+                                                            Details</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end company table  -->
+                    </div>
+                </div>
+                <!-- end notifications content -->
+
+            </div>
+        </div>
+    </div>
+    <!-- end wrapper  -->
+</div>
+<!-- end main wrapper  -->
