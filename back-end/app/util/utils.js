@@ -99,14 +99,13 @@ Utils.prototype.getSqlSelectStudentByFname = function (studentFname) {
 // SQL query for insert student
 Utils.prototype.getInsertSqlStudent = function (student) {
 
-    var sqlInsertStudent = "INSERT INTO student (user_Id,student_Id, school, grade, parent, coach, dateOfAdmission, first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, imglink, status" +
+    var sqlInsertStudent = "INSERT INTO student (user_Id,student_Id, school, grade, parent, dateOfAdmission, first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, img_link, status" +
         " ) VALUES (" +
         student.userId + ", " +
         student.studentId + ", " +
         "'" + student.studentSchool + "', " +
         student.studentGrade + ", " +
         "'" + student.studentParentName + "', " +
-        "'" + student.studentCoach + "', " +
         "'" + student.studentDate_of_addmission + "', " +
         "'" + student.studentFname + "', " +
         "'" + student.studentLname + "', " +
@@ -127,7 +126,6 @@ Utils.prototype.getUpdateSqlStudent = function (student) {
 
     var sqlUpdateStudent = "UPDATE student SET" +
         " user_Id=" + student.userId + "," +
-        " student_Id=" + student.studentId + "," +
         " grade=" + student.studentGrade + "," +
         " parent='" + student.studentParentName + "'," +
         " coach='" + student.studentCoach + "'," +
@@ -141,7 +139,7 @@ Utils.prototype.getUpdateSqlStudent = function (student) {
         " cell_phone=" + student.studentCellphone + "," +
         " fixed_phone=" + student.studentFixedPhone + "," +
         " email='" + student.studentEmail + "'," +
-        " imglink='" + student.studentImgLink + "'," +
+        " img_link='" + student.studentImgLink + "'," +
         " school='" + student.studentSchool + "'," +
         " status='" + student.studentDescription + "' WHERE" +
         " student_Id=" + student.studentId;
@@ -183,7 +181,7 @@ Utils.prototype.getSqlSelectCoachByFname = function (coachFname) {
 // SQL query for insert coach
 Utils.prototype.getInsertSqlCoach = function (coach) {
 
-    var sqlInsertCoach = "INSERT INTO coach (user_Id,NIC, experience, occupation,first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, imglink, status" +
+    var sqlInsertCoach = "INSERT INTO coach (user_Id,NIC, experience, occupation,first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, img_link, status" +
         " ) VALUES (" +
         coach.userId + ", " +
         coach.coachNIC + ", " +
@@ -221,7 +219,7 @@ Utils.prototype.getUpdateSqlCoach = function (coach) {
         " cell_phone=" + coach.coachCellphone + "," +
         " fixed_phone=" + coach.coachFixedPhone + "," +
         " email='" + coach.coachEmail + "'," +
-        " imglink='" + coach.coachImgLink + "'," +
+        " img_link='" + coach.coachImgLink + "'," +
         " status='" + coach.coachDescription + "' WHERE" +
         " user_Id=" + coach.userId;
     return sqlUpdateCoach;
@@ -262,7 +260,7 @@ Utils.prototype.getSqlSelectPoolmanagerByFname = function (poolmanagerFname) {
 // SQL query for insert poolmanager
 Utils.prototype.getInsertSqlPoolmanager = function (poolmanager) {
 
-    var sqlInsertPoolmanager = "INSERT INTO poolmanager (user_Id, NIC, experience, start_date, end_date, first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, imglink, status" +
+    var sqlInsertPoolmanager = "INSERT INTO poolmanager (user_Id, NIC, experience, start_date, end_date, first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, img_link, status" +
         "  ) VALUES (" +
         poolmanager.userId + ", " +
         poolmanager.poolmanagerNIC + ", " +
@@ -300,7 +298,7 @@ Utils.prototype.getUpdateSqlPoolmanager = function (poolmanager) {
         " cell_phone=" + poolmanager.poolmanagerCellphone + "," +
         " fixed_phone=" + poolmanager.poolmanagerFixedPhone + "," +
         " email='" + poolmanager.poolmanagerEmail + "'," +
-        " imglink='" + poolmanager.poolmanagerImgLink + "'," +
+        " img_link='" + poolmanager.poolmanagerImgLink + "'," +
         " status='" + poolmanager.poolmanagerDescription + "' WHERE" +
         " user_Id=" + poolmanager.userId;
     return sqlUpdatePoolmanager;
@@ -555,17 +553,13 @@ Utils.prototype.generateUser = function (resultUser) {
 // student object generating function
 Utils.prototype.generateStudent = function (resultStudent) {
     var student = null;
+    console.log("in utils");    
+    console.log(resultStudent);
+    
     if (resultStudent) {
         student = new Student(
 
             resultStudent.user_Id,
-            resultStudent.student_Id,
-            resultStudent.school,
-            resultStudent.grade,
-            resultStudent.parent,
-            resultStudent.coach,
-            resultStudent.dateOfAdmission,
-
             resultStudent.first_name,
             resultStudent.last_name,
             resultStudent.full_name,
@@ -576,8 +570,17 @@ Utils.prototype.generateStudent = function (resultStudent) {
             resultStudent.fixed_phone,
             resultStudent.email,
             resultStudent.imglink,
-            resultStudent.status);
+            resultStudent.status,
+
+            resultStudent.student_Id,
+            resultStudent.school,
+            resultStudent.grade,
+            resultStudent.parent,
+            resultStudent.coach,
+            resultStudent.dateOfAdmission);
     }
+    console.log("in student generating function");    
+    console.log(student);    
     return student;
 }
 

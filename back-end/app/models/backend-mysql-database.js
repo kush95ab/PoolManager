@@ -25,13 +25,15 @@ DatabaseMySql.prototype.getAuth = function (userName, callback) {
   var utils = new Utils();
 
   var sqlSelectUser = utils.getSqlAuth(userName);
+console.log(sqlSelectUser);
 
   connection.query(sqlSelectUser, function (err, resultUser) {
     console.log("in backend Mysql database");
-    // console.log(resultUser);
+    console.log(resultUser);
     
     if (err || resultUser.length == 0) {
       callback(null, err);
+      
     } else {
       console.log(resultUser[0].user_Id);
       callback(utils.generateUser(resultUser[0]));    
@@ -95,15 +97,19 @@ DatabaseMySql.prototype.insertUser = function (user, callback) {
     var SqlInsertUser = utils.getSqlInsertUser(user);
     console.log("addUser request identified in backend mysldb");
     console.log(SqlInsertUser);
+
     
     /* -- Start Inserting User -- */
     connection.query(SqlInsertUser, function (err, result ) {
+      
       if (err) {
+        console.log(err);
         connection.rollback();
         callback(null, err);
       } else {
         connection.commit(function (err) {
           if (err) {
+            console.log("user not inserted" );
             connection.rollback();
             callback(null, err);
           }
@@ -221,8 +227,8 @@ DatabaseMySql.prototype.getStudentByFname = function (studentFname, callback) {
 
 // insert student object to DB
 DatabaseMySql.prototype.insertStudent = function (student, callback) {
+console.log(student);
 
-  var utils = new Utils();
 
   /* -- Start transation -- */
   connection.beginTransaction(function (err) {
@@ -230,16 +236,23 @@ DatabaseMySql.prototype.insertStudent = function (student, callback) {
       callback(null, err);
     }
 
+    var utils = new Utils();
+
     var sqlInsertStudent = utils.getInsertSqlStudent(student);
+console.log(sqlInsertStudent);
 
     /* -- Start insert Student -- */
-    connection.query(sqlInsertStudent, function (result, err) {
+    connection.query(sqlInsertStudent, function (err,result) {
       if (err) {
+        console.log(err);
+        
         connection.rollback();
         callback(null, err);
       } else {
         connection.commit(function (err) {
           if (err) {
+            console.log(err);
+            
             connection.rollback();
             callback(null, err);
           }
@@ -254,6 +267,7 @@ DatabaseMySql.prototype.insertStudent = function (student, callback) {
 //Delete student
 
 DatabaseMySql.prototype.deleteStudent = function (student, callback) {
+console.log(student);
 
   var utils = new Utils();
 
@@ -274,7 +288,7 @@ DatabaseMySql.prototype.deleteStudent = function (student, callback) {
 DatabaseMySql.prototype.updateStudent = function (student, callback) {
 
   var utils = new Utils();
-
+ 
   /* -- Start transation -- */
   connection.beginTransaction(function (err) {
     if (err) { callback(null, err); }
@@ -364,6 +378,7 @@ DatabaseMySql.prototype.getCoachByFname = function (coachFname, callback) {
 
 // insert coach object to DB
 DatabaseMySql.prototype.insertCoach = function (coach, callback) {
+console.log(coach);
 
   var utils = new Utils();
 
@@ -506,6 +521,7 @@ DatabaseMySql.prototype.getPoolmanagerByFname = function (poolmanagerFname, call
 
 // insert poolmanager object to DB
 DatabaseMySql.prototype.insertPoolmanager = function (poolmanager, callback) {
+console.log(poolmanager);
 
   var utils = new Utils();
 

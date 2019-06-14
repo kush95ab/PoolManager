@@ -6,6 +6,7 @@ import { HttpEnum } from '../utils/httpEnum';
 import { Student } from '../entities/student';
 import { Coach } from '../entities/coach';
 import { Poolmanager } from '../entities/poolmanager';
+import { log } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -63,15 +64,23 @@ export class UserService {
 
   // Insert user to database
   insertUser(user: Object) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDUSER, user)
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDUSER, user)
       .subscribe(
         (result) => {
           alert('result deliverd to user service!')
-          return 1;
+          // alert(result[0].userId)
+          resolve(result);
+          // return result;
         },
-        (err) => alert('Error occured..1 Contact Administrations!')
+        (err) => {
+          console.log(err);          
+          alert('user insert error occured.. Contact Administrations!')
+          reject();
+        }
       );
-
+    });
+    return promise;
   }
 
   // Update current user details
@@ -96,7 +105,7 @@ export class UserService {
         (result) => {
           alert(result);
         },
-        (err) => alert('Error occured..2 Contact Administrations!')
+        (err) => alert('Error occured.. Contact Administrations!')
       );
   }
 
@@ -107,7 +116,7 @@ export class UserService {
         (result) => {
           alert(result);
         },
-        (err) => alert('Error occured..3 Contact Administrations!')
+        (err) => alert('Error occured.. Contact Administrations!')
       );
   }
 
@@ -118,7 +127,7 @@ export class UserService {
         (result) => {
           alert(result);
         },
-        (err) => alert('Error occured..4 Contact Administrations!')
+        (err) => alert('Error occured.. Contact Administrations!')
       );
   }
 
@@ -129,7 +138,7 @@ export class UserService {
         (result) => {
           alert(result);
         },
-        (err) => alert('Error occured..5 Contact Administrations!')
+        (err) => alert('Error occured.. Contact Administrations!')
       );
   }
 

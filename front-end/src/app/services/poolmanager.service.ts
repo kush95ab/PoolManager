@@ -32,20 +32,27 @@ export class PoolmanagerService {
             }
           }
         },
-        (err) => alert('getting companies error occured.. !')
+        () => alert('getting companies error occured.. !')
       );
   }
 
   // insert poolmanager details
   insertPoolmanager(poolmanager) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDPOOLMGR, poolmanager)
+    let promise = new Promise((resolve,reject) =>{
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDPOOLMGR, poolmanager)
       .subscribe(
         (result) => {
           alert("Successfully Student Inserted.");
           this.router.navigate(['/login']);
+          resolve(result);
         },
-        (err) => alert('Error occured.. Contact Administrations!')
+        (err) => {
+          alert('Error occured.. Contact Administrations!');
+        reject(err);
+        }
       );
+    });
+    return promise;
   }
 
   // delete poolmanager details
@@ -53,7 +60,7 @@ export class PoolmanagerService {
     console.log("delete poolmanager called on " + poolmanager.poolmanagerNIC);
 
     this.httpBackendRequest.realizarHttpPost(HttpEnum.DELPOOLMGR, poolmanager).subscribe(
-      (result) => {
+      () => {
         alert("Poolmanager Successfully Deleted.");
       },
 

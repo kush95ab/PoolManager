@@ -37,7 +37,6 @@ body {
     }
   }
   .bg-1 {
-    background: #16167e;
     color: #bdbdbd;
   }
   .bg-1 h3 {color: #fff;}
@@ -51,9 +50,20 @@ body {
     border-bottom-left-radius: 0;
   }
   .thumbnail {
-    padding: 0 0 15px 0;
+    padding:0px ;
     border: none;
-    border-radius: 0;
+    background-color:transparent;
+  }
+   .img{
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+  }
+
+  .btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: rgb(94, 92, 243);
+    color: #000;
   }
   .thumbnail p {
     margin-top: 15px;
@@ -61,7 +71,7 @@ body {
   }
   .btn {
     padding: 10px 20px;
-    background-color: #333;
+    /* background-color: #333; */
     color: #f1f1f1;
     border-radius: 0;
     transition: .2s;

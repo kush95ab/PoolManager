@@ -38,6 +38,8 @@ BackendController.prototype.auth = function (req, callback) {
             // console.log("** no errors");
             if (result.userPassword == req.userPassword) {
                 console.log("**** password matched");
+                console.log(result);
+
                 callback(result);
             } else {
                 console.log("**** password mismatched");
@@ -70,7 +72,7 @@ BackendController.prototype.selectUser = function (req, callback) {
 BackendController.prototype.getUsers = function (callback) {
 
     var daoMsql = new DAOMySql();
-    
+
     console.log("Enter to the get users function");
 
     daoMsql.getUsers(function (result, err) {
@@ -83,9 +85,10 @@ BackendController.prototype.getUsers = function (callback) {
     });
 }
 
+
 // Insert user
 BackendController.prototype.insertUser = function (req, callback) {
- 
+
     var daoMsql = new DAOMySql();
 
     daoMsql.insertUser(req, function (result, err) {
@@ -148,11 +151,16 @@ BackendController.prototype.deleteUser = function (req, callback) {
 BackendController.prototype.insertStudent = function (req, callback) {
 
     var daoMsql = new DAOMySql();
+    console.log("bkend contlr");
+    console.log(req);
+
 
     daoMsql.insertStudent(req, function (result, err) {
         if (err) {
+            console.log(err);
             callback(null, err);
         } else {
+            console.log(result);
             callback(result);
         }
     })
@@ -238,13 +246,17 @@ BackendController.prototype.deleteStudent = function (req, callback) {
 
 //Insert coach
 BackendController.prototype.insertCoach = function (req, callback) {
+    console.log("bkend contlr");
+    console.log(req);
 
     var daoMsql = new DAOMySql();
 
     daoMsql.insertCoach(req, function (result, err) {
         if (err) {
+            console.log(err);
             callback(null, err);
         } else {
+            console.log(result);
             callback(result);
         }
     })
@@ -328,13 +340,17 @@ BackendController.prototype.deleteCoach = function (req, callback) {
 
 //Insert poolmanager
 BackendController.prototype.insertPoolmanager = function (req, callback) {
+    console.log("bkend contlr");
+    console.log(req);
 
     var daoMsql = new DAOMySql();
 
     daoMsql.insertPoolmanager(req, function (result, err) {
         if (err) {
+            console.log(err);
             callback(null, err);
         } else {
+            console.log(result);
             callback(result);
         }
     })

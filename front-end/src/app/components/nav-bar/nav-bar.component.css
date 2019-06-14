@@ -1,13 +1,13 @@
 
 /* NEW */
 .navbar {
-  font-family: Montserrat, sans-serif;
-  margin-bottom: 0;
-  background-color: #3e3ee9;
-  border: 0;
+  font-family: serif, sans-serif;
+  /* margin-bottom: 0; */
+  /* background-color: #3e3ee9; */
+  border-radius: unset;
   font-size: 11px !important;
   letter-spacing: 4px;
-  opacity: 0.9;   
+  opacity: 1;   
 }
 .navbar li a, .navbar .navbar-brand { 
   color: #d5d5d5 !important;
@@ -20,7 +20,7 @@
   background-color: #29292c !important;
 }
 .navbar-default .navbar-toggle {
-  border-color: transparent;
+  border-color: trasparent;
 }
 .open .dropdown-toggle {
   color: #fff;

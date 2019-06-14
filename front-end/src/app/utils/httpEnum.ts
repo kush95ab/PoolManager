@@ -19,33 +19,33 @@ export enum HttpEnum {
 
     // Coach operation related urls
     UPDATECOACH = 'http://localhost:8000/api/profile/update',
-    GETCOACHES = 'http://localhost:8000/api/student/getall',
-    ADDCOACH = 'http://localhost:8000/api/student/addStudent',
-    DELCOACH ='http://localhost:8000/api/student/deleteStudent',
+    GETCOACHES = 'http://localhost:8000/api/coach/getall',
+    ADDCOACH = 'http://localhost:8000/api/coach/addCoach',
+    DELCOACH ='http://localhost:8000/api/coach/deleteCoach',
 
     // poolmanager operation related urls
     UPDATEPOOLMGR = 'http://localhost:8000/api/profile/update',
-    GETPOOLMGRS = 'http://localhost:8000/api/student/getall',
-    ADDPOOLMGR = 'http://localhost:8000/api/student/addStudent',
-    DELPOOLMGR ='http://localhost:8000/api/student/deleteStudent',
+    GETPOOLMGRS = 'http://localhost:8000/api/poolmanager/getall',
+    ADDPOOLMGR = 'http://localhost:8000/api/poolmanager/addPoolmanager',
+    DELPOOLMGR ='http://localhost:8000/api/poolmanager/deletePoolmanager',
 
-    // poolmanager operation related urls
-    UPDATEEVENT = 'http://localhost:8000/api/profile/update',
-    GETEVENTS = 'http://localhost:8000/api/student/getall',
-    ADDEVENT = 'http://localhost:8000/api/student/addStudent',
-    DELEVENT ='http://localhost:8000/api/student/deleteStudent',
+    // event operation related urls
+    UPDATEEVENT = 'http://localhost:8000/api/event/update',
+    GETEVENTS = 'http://localhost:8000/api/event/getall',
+    ADDEVENT = 'http://localhost:8000/api/event/addStudent',
+    DELEVENT ='http://localhost:8000/api/event/deleteStudent',
 
-    // poolmanager operation related urls
-    UPDATESKILL = 'http://localhost:8000/api/profile/update',
-    GETSKILLS = 'http://localhost:8000/api/student/getall',
-    ADDSKILL = 'http://localhost:8000/api/student/addStudent',
-    DELSKILL ='http://localhost:8000/api/student/deleteStudent',
+    //  operation related urls
+    UPDATESKILL = 'http://localhost:8000/api/skill/update',
+    GETSKILLS = 'http://localhost:8000/api/skill/getall',
+    ADDSKILL = 'http://localhost:8000/api/skill/addSkill',
+    DELSKILL ='http://localhost:8000/api/skill/deleteSkill',
 
-    // poolmanager operation related urls
-    UPDATEIMAGE = 'http://localhost:8000/api/profile/update',
-    GETIMAGES = 'http://localhost:8000/api/student/getall',
-    ADDIMAGE = 'http://localhost:8000/api/student/addStudent',
-    DELIMAGE ='http://localhost:8000/api/student/deleteStudent',
+    // image operation related urls
+    UPDATEIMAGE = 'http://localhost:8000/api/image/update',
+    GETIMAGES = 'http://localhost:8000/api/image/getall',
+    ADDIMAGE = 'http://localhost:8000/api/image/addImage',
+    DELIMAGE ='http://localhost:8000/api/image/deleteImage',
 
     // Notification operation related urls
     GETNORTIFICATION =  'http://localhost:8000/api/notify/getnotification'
