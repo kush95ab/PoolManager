@@ -269,6 +269,7 @@ router.route('/poolmanager/addPoolmanager').post(function (req, res) {
     });
 });
 
+
 /* Router for getting poolmanagers details */
 router.route('/poolmanager/getall').post(function (req, res) {
     backendController.getPoolmanagers(function (result, error) {
@@ -276,8 +277,11 @@ router.route('/poolmanager/getall').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
+            console.log("123");
+            
             console.log(result);
             res.json(result);
+            console.log("sent to the frontend");   
         }
     });
 });

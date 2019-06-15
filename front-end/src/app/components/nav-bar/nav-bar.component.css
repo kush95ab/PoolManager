@@ -2,10 +2,8 @@
 /* NEW */
 .navbar {
   font-family: serif, sans-serif;
-  /* margin-bottom: 0; */
-  /* background-color: #3e3ee9; */
   border-radius: unset;
-  font-size: 11px !important;
+  font-size: 12px !important;
   letter-spacing: 4px;
   opacity: 1;   
 }
@@ -18,6 +16,8 @@
 .navbar-nav li.active a {
   color: #fff !important;
   background-color: #29292c !important;
+  text-underline-position: below;
+  text-decoration-color: aquamarine;
 }
 .navbar-default .navbar-toggle {
   border-color: trasparent;

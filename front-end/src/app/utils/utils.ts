@@ -86,8 +86,8 @@ export class Utils {
         poolmanager.poolmanagerGender = dataPoolmanager.poolmanagerGender;
         poolmanager.poolmanagerDOB = dataPoolmanager.poolmanagerDOB;
         poolmanager.poolmanagerAddress = dataPoolmanager.poolmanagerAddress;
-        poolmanager.poolmanagerCellPhone = dataPoolmanager.poolmanagerCellphone;
-        poolmanager.poolmanagerFixedPhone = dataPoolmanager.poolmanagerFixedphone;
+        poolmanager.poolmanagerCellPhone = dataPoolmanager.poolmanagerCellPhone;
+        poolmanager.poolmanagerFixedPhone = dataPoolmanager.poolmanagerFixedPhone;
         poolmanager.poolmanagerEmail = dataPoolmanager.poolmanagerEmail;
         poolmanager.poolmanagerImgLink = dataPoolmanager.poolmanagerImgLink;
         poolmanager.poolmanagerDescription = dataPoolmanager.poolmanagerDescription;

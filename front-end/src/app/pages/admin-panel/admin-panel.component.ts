@@ -105,7 +105,7 @@ export class AdminPanelComponent implements OnInit {
 
 
   // Delete function for users by id
-  deleteUser(userId: string) {
+  deleteUser(userId: number) {
 
     // Initialise user with user id
     let user = new User();

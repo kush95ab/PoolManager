@@ -388,10 +388,11 @@ console.log(coach);
       callback(null, err);
     }
 
+
     var sqlInsertCoach = utils.getInsertSqlCoach(coach);
 
     /* -- Start insert Coach -- */
-    connection.query(sqlInsertCoach, function (result, err) {
+    connection.query(sqlInsertCoach, function (err,result) {
       if (err) {
         connection.rollback();
         callback(null, err);
@@ -402,6 +403,8 @@ console.log(coach);
             callback(null, err);
           }
           console.log('Transaction Complete.');
+          console.log(result);
+          
           callback("Coach successfully inserted into the system!");
         });
       }
@@ -472,10 +475,13 @@ DatabaseMySql.prototype.getPoolmanagers = function (callback) {
   var utils = new Utils();
 
   var sqlSelectAllPoolmanagers = utils.getSqlSelectAllPoolmanagers();
+console.log(sqlSelectAllPoolmanagers);
 
   connection.query(sqlSelectAllPoolmanagers, function (err, resultPoolmanager) {
     if (err || resultPoolmanager.length == 0) {
       callback(null, err);
+      console.log(err); 
+      
     } else {
       var i = 0; var resCom = [];
       while (resultPoolmanager[i]) {
@@ -534,7 +540,7 @@ console.log(poolmanager);
     var sqlInsertPoolmanager = utils.getInsertSqlPoolmanager(poolmanager);
 
     /* -- Start insert Poolmanager -- */
-    connection.query(sqlInsertPoolmanager, function (result, err) {
+    connection.query(sqlInsertPoolmanager, function (err, result) {
       if (err) {
         connection.rollback();
         callback(null, err);

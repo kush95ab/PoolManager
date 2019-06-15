@@ -45,7 +45,7 @@ export class CoachService {
       this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDCOACH, coach)
         .subscribe(
           (result) => {
-            alert("Successfully Student Inserted.");
+            alert("Successfully Coach Inserted.");
             this.router.navigate(['/login']);
             resolve(result);
           },

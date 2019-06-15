@@ -99,14 +99,14 @@ Utils.prototype.getSqlSelectStudentByFname = function (studentFname) {
 // SQL query for insert student
 Utils.prototype.getInsertSqlStudent = function (student) {
 
-    var sqlInsertStudent = "INSERT INTO student (user_Id,student_Id, school, grade, parent, dateOfAdmission, first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, img_link, status" +
+    var sqlInsertStudent = "INSERT INTO student (user_Id,student_Id, school, grade, parent, first_name, last_name, full_name, dob, gender, address, cell_phone, fixed_phone, email, img_link, status" +
         " ) VALUES (" +
         student.userId + ", " +
         student.studentId + ", " +
         "'" + student.studentSchool + "', " +
         student.studentGrade + ", " +
         "'" + student.studentParentName + "', " +
-        "'" + student.studentDate_of_addmission + "', " +
+        // "" + student.studentDate_of_addmission + "', " +
         "'" + student.studentFname + "', " +
         "'" + student.studentLname + "', " +
         "'" + student.studentFullname + "', " +
@@ -569,7 +569,7 @@ Utils.prototype.generateStudent = function (resultStudent) {
             resultStudent.cell_phone,
             resultStudent.fixed_phone,
             resultStudent.email,
-            resultStudent.imglink,
+            resultStudent.img_link,
             resultStudent.status,
 
             resultStudent.student_Id,
@@ -606,7 +606,7 @@ Utils.prototype.generateCoach = function (resultCoach) {
             resultCoach.cell_phone,
             resultCoach.fixed_phone,
             resultCoach.email,
-            resultCoach.imglink,
+            resultCoach.img_link,
             resultCoach.status);
     }
     console.log('in utils 2');
@@ -635,7 +635,7 @@ Utils.prototype.generatePoolmanager = function (resultPoolmanager) {
             resultPoolmanager.cell_phone,
             resultPoolmanager.fixed_phone,
             resultPoolmanager.email,
-            resultPoolmanager.imglink,
+            resultPoolmanager.img_link,
             resultPoolmanager.status);
     }
     return poolmanager;

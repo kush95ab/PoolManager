@@ -28,8 +28,8 @@ export class StudentProfileComponent implements OnInit {
   gender: string;
   address: string;
   email: string;
-  cellphone: string;
-  fixedphone: string;
+  cellphone: number;
+  fixedphone: number;
   description: string;
   image: string;
 

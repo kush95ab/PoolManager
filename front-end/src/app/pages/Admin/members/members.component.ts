@@ -16,6 +16,7 @@ import { PoolmanagerService } from '../../../services/poolmanager.service';
 import { Auth } from '../../../entities/auth';
 import { Router } from '@angular/router';
 import { promise } from 'protractor';
+import { log } from 'util';
 
 @Component({
   selector: 'app-members',
@@ -26,6 +27,7 @@ export class MembersComponent implements OnInit {
 
   students: Student[];
   coaches: Coach[];
+  poolmanagers: Poolmanager[];
 
 
   fname: string;
@@ -35,8 +37,8 @@ export class MembersComponent implements OnInit {
   gender: string;
   address: string;
   email: string;
-  cellphone: string;
-  fixedphone: string;
+  cellphone: number;
+  fixedphone: number;
   description: string;
   image: string;
 
@@ -69,6 +71,11 @@ export class MembersComponent implements OnInit {
 
   member_students: boolean = true;
   member_coaches: boolean = false;
+  member_poolmanagers: boolean = false;
+
+
+  deleteAccount: boolean = false;
+  confirmed: boolean = false;
 
   constructor(private router: Router, private uploadService: UploadFileService,
     private userService: UserService, private authService: AuthenticationService,
@@ -78,8 +85,9 @@ export class MembersComponent implements OnInit {
   ngOnInit() {
     this.retreveStudents();
     this.retreveCoaches();
+    this.retrevePoolManagers();
   }
-
+  //function of selecting image file and uploading to system 
 
   uploadFile() {
     this.currentFileUpload = this.selectedFiles.item(0);
@@ -93,34 +101,101 @@ export class MembersComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
+
+
+
+  //  functions of retreve members form database
+
   retreveStudents() {
     this.students = this.studentService.getStudents();
   }
   retreveCoaches() {
     this.coaches = this.coachService.getCoaches();
   }
+  retrevePoolManagers() {
+    this.poolmanagers = this.poolmanagerService.getPoolmanagers();
+    console.log(this.poolmanagers);
 
-  openMemeber(x: string) {
+  }
+
+
+
+
+
+  //  functions of delete members from database
+
+  deleteStudent(std: Student) {
+    this.deleteAccount = true;
+    if (this.confirmed) {
+      this.studentService.deleteStudent(std);
+      this.deleteAccount = false;
+      this.confirmed=false;
+    } else {
+      this.deleteAccount = false;
+      this.confirmed=false;
+    }
+  }
+
+  deleteCoach(coach: Coach) {
+    this.deleteAccount = true;
+    if (this.confirmed) {
+      this.coachService.deleteCoach(coach);
+      this.deleteAccount = false;
+      this.confirmed=false;
+    } else {
+      this.deleteAccount = false;
+      this.confirmed=false;
+    }
+  }
+
+  deletePoolmanager(plmgr: Poolmanager) {
+    this.deleteAccount = true;
+    if (this.confirmed) {
+      this.poolmanagerService.deletePoolmanager(plmgr);
+      this.deleteAccount = false;
+      this.confirmed=false;
+    } else {
+      this.deleteAccount = false;
+      this.confirmed=false;
+    }
+  }
+
+
+
+
+
+  // functions of toggleing members tabs
+  openMember(x: string) {
     switch (x) {
       case "member_coaches":
         this.member_coaches = true;
         this.member_students = false;
+        this.member_poolmanagers = false;
         break;
       case "member_students":
         this.member_students = true;
         this.member_coaches = false;
+        this.member_poolmanagers = false;
         break;
       default:
-        this.member_students = true;
+        this.member_students = false;
         this.member_coaches = false;
+        this.member_poolmanagers = true;
+
         break;
     }
   }
 
-  viewStudent(std:Student){
+
+  // functions of sending selected users to relevent user services
+  viewStudent(std: Student) {
     this.studentService.setCurrentStd(std);
   }
-  viewCoach(coach:Coach){
+  viewCoach(coach: Coach) {
     this.coachService.setCurrentCoach(coach);
   }
+  viewPoolmanager(poolmanager: Poolmanager) {
+    this.poolmanagerService.setCurrentPoolmanager(poolmanager);
+  }
+
 }
