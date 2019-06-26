@@ -32,8 +32,8 @@ export enum HttpEnum {
     // event operation related urls
     UPDATEEVENT = 'http://localhost:8000/api/event/update',
     GETEVENTS = 'http://localhost:8000/api/event/getall',
-    ADDEVENT = 'http://localhost:8000/api/event/addStudent',
-    DELEVENT ='http://localhost:8000/api/event/deleteStudent',
+    ADDEVENT = 'http://localhost:8000/api/event/addEvent',
+    DELEVENT ='http://localhost:8000/api/event/deleteEvent',
 
     //  operation related urls
     UPDATESKILL = 'http://localhost:8000/api/skill/update',

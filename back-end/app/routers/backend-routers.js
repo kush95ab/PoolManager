@@ -551,7 +551,7 @@ router.route('/event/getall').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
-            console.log(result);
+            console.log("Eventslist ",result);
             res.json(result);
         }
     });

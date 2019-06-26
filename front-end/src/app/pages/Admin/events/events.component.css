@@ -24,10 +24,11 @@ div.gallery {
   display:table;
   clear:both
   }
-  .container{
+  .container {
       margin-top:16px;
       margin-bottom:16px;
       font-size:15px;
+      text-align: center;
   }
   .modal{
       z-index:3;

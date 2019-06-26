@@ -165,7 +165,7 @@ usertype: string;
   // function for image uploading
   selectFile(event) {
     this.selectedFiles = event.target.files;
-  }
+  } 
 
   uploadFile() {
     this.currentFileUpload = this.selectedFiles.item(0);

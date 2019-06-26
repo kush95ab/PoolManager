@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { UploadFileService } from '../../../services/upload-file.service';
 import { HttpEnum } from '../../../utils/httpEnum';
@@ -126,14 +125,14 @@ export class MembersComponent implements OnInit {
 
   deleteStudent(std: Student) {
     this.deleteAccount = true;
-    if (this.confirmed) {
+    // if (this.confirmed) {
       this.studentService.deleteStudent(std);
       this.deleteAccount = false;
       this.confirmed=false;
-    } else {
+    // } else {
       this.deleteAccount = false;
       this.confirmed=false;
-    }
+    // }
   }
 
   deleteCoach(coach: Coach) {
@@ -159,8 +158,6 @@ export class MembersComponent implements OnInit {
       this.confirmed=false;
     }
   }
-
-
 
 
 

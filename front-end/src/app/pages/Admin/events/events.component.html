@@ -1,193 +1,120 @@
-
 <!-- Add the app header section -->
 <app-header></app-header>
+<div>
+	<div class="row">
+		<div class="col">
+			<div class="container-fluid ">
+				<div class="card">
+					<div class="card-header">
+						<h1>Past Events</h1>
+					</div>
+					<div *ngFor="let event of pastEvents">
+						<div class="card-body" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+							aria-controls="collapseOne">
+							<div class="col-lg-3">
+								<h5>{{getDateTime(event.eventDate)}}</h5>
+							</div>
+							<div class="col-lg-9">
+								<h5>{{event.eventName}}</h5>
+							</div>
+						</div>
+						<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+							data-parent="#accordion">
+							<div class="card-body">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+								squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+								quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+								squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+								craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+								butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+								nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							</div>
 
-
-<body scrollbar="yes">
-
-<div class="container">
-  <button class="btn" data-toggle="modal" data-target="#myModal" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Past</button>
-
-  <div id="id01" class="modal">
-    <div class="modal-content">
-      <header class="container teal"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-        class="button display-topright">&times;</span>
-        <h2>Past Events</h2>
-      </header>
-      <div class="container">
-        
-	<div class="gallery">
-	  <a target="_blank" href="img_5terre.jpg">
-		<img src="img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-
-	<div class="gallery">
-	  <a target="_blank" href="img_forest.jpg">
-		<img src="img_forest.jpg" alt="Forest" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-
-	<div class="gallery">
-	  <a target="_blank" href="img_lights.jpg">
-		<img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-
-	<div class="gallery">
-	  <a target="_blank" href="img_mountains.jpg">
-		<img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-		  </div>
-		  <footer class="container teal">
-			<p>Modal Footer</p>
-		  </footer>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	
-	<button class="btn" data-toggle="modal" data-target="#myModal" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Present</button>
+		<div class="col">
+			<div class="container-fluid">
+				<div class="card">
+					<div class="card-header">
 
-  <div id="id02" class="modal">
-    <div class="modal-content">
-      <header class="container teal"> 
-        <span onclick="document.getElementById('id02').style.display='none'" 
-        class="button display-topright">&times;</span>
-        <h2>Present Events</h2>
-      </header>
-      <div class="container">
-        
-	<div class="gallery">
-	  <a target="_blank" href="img_5terre.jpg">
-		<img src="img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
+						<h1>Today Events</h1>
+					</div>
+					<div *ngFor="let event of todayEvents">
 
-	<div class="gallery">
-	  <a target="_blank" href="img_forest.jpg">
-		<img src="img_forest.jpg" alt="Forest" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-	
-	<div class="gallery">
-	  <a target="_blank" href="img_forest.jpg">
-		<img src="img_forest.jpg" alt="Forest" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-	
+						<div class="row">
+							<div class="card-body">
 
-	<div class="gallery">
-	  <a target="_blank" href="img_lights.jpg">
-		<img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
+								<div class="col-lg-3">
+									<h3>{{getDateTime(event.eventDate)}}</h3>
+								</div>
+								<div class="col-lg-6">
+									<h3>{{event.eventName}}</h3>
 
-	<div class="gallery">
-	  <a target="_blank" href="img_mountains.jpg">
-		<img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-		  </div>
-		  <footer class="container teal">
-			<p>Modal Footer</p>
-		  </footer>
+									<p>{{event.eventDescription}}</p>
+								</div>
+								<div class="col-lg-3">
+									<h3></h3>
+									{{event.eventStart_time}} to
+									{{event.eventEnd_time}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	
-	<button class="btn" data-toggle="modal" data-target="#myModal" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Upcoming</button>
+		<div class="col">
+			<div class="container-fluid">
+				<div class="card">
+					<div class="card-header">
+						<h1>Upcomming Events</h1>
+					</div>
+					<div *ngFor="let event of upcomingEvents">
+						<div class="card-body">
+							<div class="col-lg-3">
+								<h5>{{getDateTime(event.eventDate)}}</h5>
+							</div>
+							<div class="col-lg-9">
+								<h5>{{event.eventName}}</h5>
+							</div>
+						</div>
 
-  <div id="id03" class="modal">
-    <div class="modal-content">
-      <header class="container teal"> 
-        <span onclick="document.getElementById('id03').style.display='none'" 
-        class="button display-topright">&times;</span>
-        <h2>Upcoming Events</h2>
-      </header>
-      <div class="container">
-        
-	<div class="gallery">
-	  <a target="_blank" href="img_5terre.jpg">
-		<img src="img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-
-	<div class="gallery">
-	  <a target="_blank" href="img_forest.jpg">
-		<img src="img_forest.jpg" alt="Forest" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-
-	<div class="gallery">
-	  <a target="_blank" href="img_lights.jpg">
-		<img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-
-	<div class="gallery">
-	  <a target="_blank" href="img_mountains.jpg">
-		<img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
-	  </a>
-	  <div class="desc">venue: sugathadasa stadium</div>
-	  <div class="desc">Date : 15 August 2019</div>
-	  <div class="desc">Time: 9 AM onwards</div>
-	  <div class="desc">Organizer: Sports club,Minuwangoda</div>
-	</div>
-		  </div>
-		  <footer class="container teal">
-			<p>Modal Footer</p>
-		  </footer>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-            
+
+
+<div id="accodion">
+	<div class="card">
+		<div class="card-header" id="headingOne">
+			<h5 class="mb-0">
+				<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+					aria-controls="collapseOne">
+					Collapsible Group Item #1
+				</button>
+			</h5>
+		</div>
+
+		<!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> -->
+			<div class="card-body" id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		<!-- </div> -->
+	</div>
+	
+</div>
+
+
 <!-- Add the app footer section -->
 <app-footer></app-footer>
