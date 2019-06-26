@@ -19,7 +19,7 @@ export const routes: Routes = [
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'event', component: EventsComponent },
   { path: 'member', component: MembersComponent },
-  { path: '**', component: Error404Component }  
+  { path: '**', component: Error404Component }
 ];
 
 export const partialComponents = [];

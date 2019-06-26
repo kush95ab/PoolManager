@@ -23,6 +23,7 @@
     "@angular/router": "^6.0.3",
     "@types/jquery": "^3.3.29",
     "angular-font-awesome": "^3.1.2",
+    "angular-fusioncharts": "^3.0.2",
     "angular-popper": "^2.0.0",
     "angularfire2": "^5.1.1",
     "bootstrap": "^4.2.1",
@@ -30,10 +31,11 @@
     "cors": "^2.8.4",
     "firebase": "^5.7.2",
     "font-awesome": "^4.7.0",
+    "fusioncharts": "^3.13.5",
     "jquery": "^3.3.1",
     "ngx-bootstrap": "^3.1.4",
     "popper.js": "^1.14.6",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.2.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

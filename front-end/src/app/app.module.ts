@@ -46,6 +46,8 @@ import { environment } from 'src/environments/environment';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +72,7 @@ import { environment } from 'src/environments/environment';
     ChlorineValComponent,
     EventsComponent,
     MembersComponent,
+
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseconfig),
