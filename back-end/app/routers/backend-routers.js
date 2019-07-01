@@ -79,6 +79,7 @@ router.route('/user/addUser').post(function (req, res) {
             res.json(result);
         }
     });
+    
 });
 
 /* Route for update user */
@@ -113,6 +114,7 @@ router.route('/user/deleteUser').post(function (req, res) {
 
 /* Route for insert student */
 router.route('/student/addStudent').post(function (req, res) {
+    console.log("Add student request identified by backend router");    
     console.log(req.body);
     backendController.insertStudent(req.body, function (result, error) {
 
@@ -182,6 +184,7 @@ router.route('/student/deleteStudent').post(function (req, res) {
 
 /* Route for insert coach */
 router.route('/coach/addCoach').post(function (req, res) {
+    console.log("Add Coach request identified by backend router");    
     console.log(req.body);
     backendController.insertCoach(req.body, function (result, error) {
 
@@ -225,6 +228,7 @@ router.route('/coach/updateCoach').post(function (req, res) {
 
 /** Router for getting delete coach */
 router.route('/coach/deleteCoach').post(function (req, res) {
+    console.log("delete coach request identified by backend router");    
     console.log(req.body);
 
     backendController.deleteCoach(req.body, function (result, error) {
@@ -252,6 +256,7 @@ router.route('/coach/deleteCoach').post(function (req, res) {
 
 /* Route for insert poolmanager */
 router.route('/poolmanager/addPoolmanager').post(function (req, res) {
+    console.log("Add Poolmanager request identified by backend router");    
     console.log(req.body);
     backendController.insertPoolmanager(req.body, function (result, error) {
 
@@ -264,6 +269,7 @@ router.route('/poolmanager/addPoolmanager').post(function (req, res) {
     });
 });
 
+
 /* Router for getting poolmanagers details */
 router.route('/poolmanager/getall').post(function (req, res) {
     backendController.getPoolmanagers(function (result, error) {
@@ -271,8 +277,11 @@ router.route('/poolmanager/getall').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
+            console.log("123");
+            
             console.log(result);
             res.json(result);
+            console.log("sent to the frontend");   
         }
     });
 });
@@ -542,7 +551,7 @@ router.route('/event/getall').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
-            console.log(result);
+            console.log("Eventslist ",result);
             res.json(result);
         }
     });

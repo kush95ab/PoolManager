@@ -1,15 +1,15 @@
 // Entity class for Student
 
 export class Student {
-    userId:string;
+    userId:number;
     studentFname: string;
     studentLname: string;
     studentFullname:string;
     studentDOB:string;
     studentGender:string;
     studentAddress: string;
-    studentCellPhone: string;
-    studentFixedPhone: string;
+    studentCellPhone: number;
+    studentFixedPhone: number;
     studentEmail: string;
     studentImgLink: string;
     studentDescription: string;
@@ -43,7 +43,7 @@ export class Student {
     }
     
     
-    public getUserId(): string {
+    public getUserId(): number {
         return this.userId;
     }
 
@@ -62,11 +62,11 @@ export class Student {
         return this.studentAddress;
     }
 
-    public getCellPhone(): string {
+    public getCellPhone(): number {
         return this.studentCellPhone;
     }
     
-    public getFixedPhone(): string {
+    public getFixedPhone(): number {
         return this.studentFixedPhone;
     }
     public getEmail(): string {
@@ -112,7 +112,7 @@ export class Student {
         this.studentDate_of_addmission = date;
     }
     
-    public setUserId(id: string) {
+    public setUserId(id: number) {
         this.userId = id;
     }
 
@@ -132,11 +132,11 @@ export class Student {
         this.studentAddress = address;
     }
 
-    public setCellPhone(phone: string) {
+    public setCellPhone(phone: number) {
         this.studentCellPhone = phone;
     }
 
-    public setFixedPhone(phone: string) {
+    public setFixedPhone(phone: number) {
         this.studentFixedPhone = phone;
     }
 

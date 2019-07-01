@@ -1,13 +1,13 @@
 // Entity class for poolmanager
 
 export class Poolmanager {
-    userId:string;
+    userId:number;
     poolmanagerFname: string;
     poolmanagerFullname:string;
     poolmanagerLname: string;
     poolmanagerAddress: string;
-    poolmanagerCellPhone: string;
-    poolmanagerFixedPhone: string;
+    poolmanagerCellPhone: number;
+    poolmanagerFixedPhone: number;
     poolmanagerEmail: string;
     poolmanagerImgLink: string;
     poolmanagerDescription: string;
@@ -29,7 +29,7 @@ export class Poolmanager {
     
    
     
-    public getUserId(): string {
+    public getUserId(): number {
         return this.userId;
     }
 
@@ -48,11 +48,11 @@ export class Poolmanager {
         return this.poolmanagerAddress;
     }
 
-    public getCellPhone(): string {
+    public getCellPhone(): number {
         return this.poolmanagerCellPhone;
     }
     
-    public getFixedPhone(): string {
+    public getFixedPhone(): number {
         return this.poolmanagerFixedPhone;
     }
     public getEmail(): string {
@@ -86,7 +86,7 @@ export class Poolmanager {
     }
    
   
-    public setUserId(id: string) {
+    public setUserId(id: number) {
         this.userId = id;
     }
 
@@ -106,11 +106,11 @@ export class Poolmanager {
         this.poolmanagerAddress = address;
     }
 
-    public setCellPhone(phone: string) {
+    public setCellPhone(phone: number) {
         this.poolmanagerCellPhone = phone;
     }
 
-    public setFixedPhone(phone: string) {
+    public setFixedPhone(phone: number) {
         this.poolmanagerFixedPhone = phone;
     }
 

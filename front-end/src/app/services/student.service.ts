@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class StudentService {
 
+  currentStudent: Student;
   studentsList: Student[] = new Array();
 
   constructor(private router: Router,
     private httpBackendRequest: HttpBackendRequestService) { }
 
   // get all the students' details
-  getStudents() {
+  getStudents():Student[] {
     this.studentsList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTS, null)
       .subscribe(
@@ -30,22 +31,59 @@ export class StudentService {
               this.studentsList.push(stud);
               i = i + 1;
             }
+            // console.log(this.studentsList);
           }
         },
         (err) => alert('getting companies error occured.. !')
       );
+      return this.studentsList;
   }
 
   // insert student details
   insertStudent(student) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDSTUDENT, student)
-      .subscribe(
-        (result) => {
-          alert("Successfully Student Inserted.");
-          this.router.navigate(['/login']);
-        },
-        (err) => alert('Error occured.. Contact Administrations!')
-      );
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDSTUDENT, student)
+        .subscribe(
+          (result) => {
+            alert("Successfully Student Inserted.");
+            this.router.navigate(['/login']);
+            resolve(result);
+          },
+          (err) => {
+            alert('student insert error occured.. Contact Administrations!');
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+   // update student details
+   updateStudent(student) {
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.UPDATESTUDENT, student)
+        .subscribe(
+          (result) => {
+            alert("Successfully Student Inserted.");
+            // this.router.navigate(['/login']);
+            resolve(result);
+          },
+          (err) => {
+            alert('student insert error occured.. Contact Administrations!');
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  //helping function for view profile
+  setCurrentStd(std:Student){
+    this.currentStudent=std;
+  }
+
+  getCurrentStudent(){
+    return this.currentStudent;
   }
 
   // delete student details

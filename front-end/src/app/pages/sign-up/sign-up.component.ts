@@ -9,6 +9,8 @@ import { Poolmanager } from '../../entities/poolmanager';
 import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { StudentService } from '../../services/student.service';
+import { CoachService } from '../../services/coach.service';
+import { PoolmanagerService } from '../../services/poolmanager.service';
 
 import { Auth } from '../../entities/auth';
 import { Router } from '@angular/router';
@@ -29,12 +31,14 @@ export class SignUpComponent implements OnInit {
   gender: string;
   address: string;
   email: string;
-  cellphone: string;
-  fixedphone: string;
+  cellphone: number;
+  fixedphone: number;
   description: string;
   image: string;
-
-  usertype: string;
+  
+signup:boolean=true;
+  
+usertype: string;
   username: string;
   password: string;
   confirm: string;
@@ -45,7 +49,7 @@ export class SignUpComponent implements OnInit {
   parentname: string;
   grade: string;
   admissionDate: string;
-  
+
   //unique for coach and poolmanager
   NIC: string;
   occupation: string;
@@ -56,14 +60,15 @@ export class SignUpComponent implements OnInit {
   imageAddress: string;
 
   //booleans
-  choosen: boolean =false;
-  Studentsignup: boolean=false;
-  Coachsignup: boolean=false;
-  Poolmanagersignup: boolean=false;
+  choosen: boolean = false;
+  Studentsignup: boolean = false;
+  Coachsignup: boolean = false;
+  Poolmanagersignup: boolean = false;
 
-  constructor(private router: Router,private uploadService: UploadFileService,
+  constructor(private router: Router, private uploadService: UploadFileService,
     private userService: UserService, private authService: AuthenticationService,
-    private studentService: StudentService) { }
+    private studentService: StudentService, private coachService: CoachService,
+    private poolmanagerService: PoolmanagerService) { }
 
   ngOnInit() {
     this.image = "default.jpg";
@@ -72,14 +77,14 @@ export class SignUpComponent implements OnInit {
 
   //selecting user type
 
-  studentsignup(){
+  studentsignup() {
     this.Studentsignup = true;
     this.Coachsignup = false;
     this.Poolmanagersignup = false;
     this.choosen = true;
     this.usertype = "S";
   }
-  coachsignup(){
+  coachsignup() {
     this.Studentsignup = false;
     this.Coachsignup = true;
     this.Poolmanagersignup = false;
@@ -87,7 +92,7 @@ export class SignUpComponent implements OnInit {
     this.usertype = "C";
   }
 
-  poolmanagersignup(){
+  poolmanagersignup() {
     this.Studentsignup = false;
     this.Coachsignup = false;
     this.Poolmanagersignup = true;
@@ -95,28 +100,74 @@ export class SignUpComponent implements OnInit {
     this.usertype = "P";
   }
   submitForm() {
-    var userresult = this.userService.insertUser(this.createUser());
-       
-      let auth = new Auth(this.username,this.password);
-      this.authService.getLoggingUser(auth);
-      // console.log(auth);
-      
-    
-    let student = this.createStudent();   
-    student.setUserId(this.authService.getUser().userId);
-    console.log(student);
-    this.studentService.insertStudent(student);
+    let userresult = this.userService.insertUser(this.createUser()).then(() => {
 
-    alert("Registration Successful.");
-    this.router.navigate(['/login']);  
+      let auth = new Auth(this.username, this.password);
+      this.authService.getLoggingUser(auth).then(() => {
+
+
+        switch (this.usertype) {
+          case 'S': {
+            
+            let student = this.createStudent();
+            student.setUserId(this.authService.getUser().userId);
+            console.log(student);
+            this.studentService.insertStudent(student).then(() => {
+
+              alert("Registration Successful.");
+              this.router.navigate(['/login']);
+            }).catch(error => {
+              alert("Error occured. " + error);
+            })
+            break;
+          }
+          case 'C': {
+
+            let coach = this.createCoach();
+            coach.setUserId(this.authService.getUser().userId);
+            console.log(coach);
+            this.coachService.insertCoach(coach).then(() => {
+
+              alert("Registration Successful.");
+              this.router.navigate(['/login']);
+            }).catch(error => {
+              alert("Error occured. " + error);
+            })
+            break;
+          }
+          case 'P': {
+
+            let poolmanager = this.createPoolmanager();
+            poolmanager.setUserId(this.authService.getUser().userId);
+            console.log(poolmanager);
+            this.poolmanagerService.insertPoolmanager(poolmanager).then(() => {
+
+              alert("Registration Successful.");
+              this.router.navigate(['/login']);
+            }).catch(error => {
+              alert("Error occured. " + error);
+            })
+            break;
+          }
+        }
+
+
+
+      }).catch(error => {
+        alert("Error occured. " + error);
+      })
+      // console.log(auth);
+    }).catch(error => {
+      alert("Error occured. " + error);
+    })
   }
 
   // function for image uploading
   selectFile(event) {
     this.selectedFiles = event.target.files;
-  }
- 
-  uploadFile() { 
+  } 
+
+  uploadFile() {
     this.currentFileUpload = this.selectedFiles.item(0);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
       if (event instanceof HttpResponse) {
@@ -124,7 +175,7 @@ export class SignUpComponent implements OnInit {
         this.imageAddress = HttpEnum.BASEURL + this.image;
         console.log('File is completely uploaded!');
       }
-    }); 
+    });
     this.selectedFiles = undefined;
   }
 
@@ -155,7 +206,7 @@ export class SignUpComponent implements OnInit {
     student.setStudentSchool(this.school);
     student.setParentName(this.parentname);
     student.setStudentGrade(this.grade);
-    
+
     return student;
   }
 
@@ -176,7 +227,7 @@ export class SignUpComponent implements OnInit {
     coach.setNIC(this.NIC);
     coach.setOccupation(this.occupation);
     coach.setExperience(this.experience);
-    
+
     return coach;
   }
 
@@ -196,7 +247,7 @@ export class SignUpComponent implements OnInit {
 
     poolmanager.setNIC(this.NIC);
     poolmanager.setExperience(this.experience);
-    
+
     return poolmanager;
   }
 }

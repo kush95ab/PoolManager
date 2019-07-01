@@ -1,4 +1,19 @@
-<div class="well" style="background-color: #555;color:white;">
-    <h2>Events bar component</h2>
+<div class="well" style="background-color: white;color:black;">
+    <h2>Today Events</h2>
 
+    <ng-container *ngIf="eventChecker(); else elseTemplate">
+        <div *ngFor="let event of todayEvents">
+            <div class="card">
+                <div class="card-body">
+                    <span>{{event.eventStart_time}}</span>
+                    <span>{{event.eventName}}</span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <div class="card">
+            No Events for Today
+        </div>
+    </ng-template>
 </div>

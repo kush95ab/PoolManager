@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class CoachService {
-  
+
   coachList: Coach[] = new Array();
-  
+  currentCoach: Coach;
+
   constructor(private router: Router,
     private httpBackendRequest: HttpBackendRequestService) { }
 
-    // get all the coachs' details
-  getCoaches() {
+  // get all the coachs' details
+  getCoaches(): Coach[] {
     this.coachList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETCOACHES, null)
       .subscribe(
@@ -35,18 +36,53 @@ export class CoachService {
         },
         (err) => alert('getting companies error occured.. !')
       );
+    return this.coachList;
   }
 
   // insert coach details
   insertCoach(coach) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDCOACH, coach)
-      .subscribe(
-        (result) => {
-          alert("Successfully Student Inserted.");
-          this.router.navigate(['/login']);
-        },
-        (err) => alert('Error occured.. Contact Administrations!')
-      );
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDCOACH, coach)
+        .subscribe(
+          (result) => {
+            alert("Successfully Coach Inserted.");
+            this.router.navigate(['/login']);
+            resolve(result);
+          },
+          (err) => {
+            alert('Error occured.. Contact Administrations!');
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  // update coach details
+  updateCoach(coach) {
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.UPDATECOACH, coach)
+        .subscribe(
+          (result) => {
+            alert("Successfully Student Inserted.");
+            // this.router.navigate(['/login']);
+            resolve(result);
+          },
+          (err) => {
+            alert('Error occured.. Contact Administrations!');
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  // viewcoach helping functions
+  setCurrentCoach(coach: Coach) {
+    this.currentCoach = coach;
+  }
+  getCurrentCoach() {
+    return this.currentCoach;
   }
 
   // delete coach details

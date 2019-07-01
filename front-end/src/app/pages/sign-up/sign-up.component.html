@@ -5,24 +5,27 @@
     <div class="container">
 
         <div class="row text-center">
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <!-- <img src="paris.jpg" alt="Paris" width="400" height="300"> -->
-                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="studentsignup()">Students</button>
+            
+            <div class="col-sm-4 text-center " > 
+                <div class="thumbnail" (click)="studentsignup()">
+
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Students <br> <img class="img"
+                            src="../../../assets/img/Student.jpg" alt="Paris"></button>
 
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" (click)="coachsignup()">
                 <div class="thumbnail">
-                    <!-- <img src="newyork.jpg" alt="New York" width="400" height="300"> -->
-                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="coachsignup()">Coach</button>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Coach <br> <img class="img"
+                            src="../../../assets/img/coach-icon.png" alt="New York" >
+                    </button>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="thumbnail">
-                    <!-- <img src="sanfran.jpg" alt="San Francisco" width="400" height="300"> -->
-                    <button class="btn" data-toggle="modal" data-target="#myModal" (click)="poolmanagersignup()">Pool
-                        Manager</button>
+                <div class="thumbnail" (click)="poolmanagersignup()">
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Pool Manager <br> <img class="img"
+                            src="../../../assets/img/poolmanager.jpg" alt="San Francisco">
+                    </button>
                 </div>
             </div>
         </div>
@@ -50,21 +53,21 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="card-body">
 
-                    <!-- coach or poolmanger signup -->
+                    <!-- only for coach or poolmanger signup -->
                     <div *ngIf="Coachsignup||Poolmanagersignup">
                         <div class="form-group">
-                            <input [(ngModel)]="nic" name="nic" type="text" class="form-control form-control-lg"
+                            <input [(ngModel)]="NIC" name="NIC" type="text" class="form-control form-control-lg"
                                 placeholder="NIC Number" required="true" title="Enter your NIC number"
                                 autocomplete="off" />
                         </div>
                     </div>
 
-                    <!-- student signup -->
+                    <!-- only for student signup -->
                     <div *ngIf="Studentsignup">
                         <div class="form-group">
-                            <input [(ngModel)]="indexNumber" name="indexNumber" type="text"
+                            <input [(ngModel)]="studentId" name="studentId" type="text"
                                 class="form-control form-control-lg" placeholder="Index Number" required="true"
-                                title="Enter your first name" autocomplete="off" />
+                                title="Enter your Student Number" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -77,13 +80,12 @@
                     </div>
                     <div class="form-group">
                         <input [(ngModel)]="fullname" name="fullname" type="text" class="form-control form-control-lg"
-                            placeholder="Full Name" required="true" title="Enter your Full name "
-                            autocomplete="off" />
+                            placeholder="Full Name" required="true" title="Enter your Full name " autocomplete="off" />
                     </div>
 
                     <div class="form-group">
                         <input [(ngModel)]="dob" name="dob" type="date" class="form-control form-control-lg"
-                            placeholder="Date Of Birth" required="false" title="Enter your birthday"
+                            placeholder="Date Of Birth" required="false" title="Enter your birthday" value="01/01/2010"
                             autocomplete="off" />
                     </div>
 
@@ -92,14 +94,14 @@
                     <div class="form-group">
                         <div class="row px-2">
                             <label class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="gender" id="male"
-                                    autocomplete="off">
+                                <input [(ngModel)]="gender" type="radio" class="custom-control-input" name="gender"
+                                    value="male" autocomplete="off">
                                 <span class="custom-control-label"> Male</span>
                             </label>
 
                             <label class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="gender" id="female"
-                                    autocomplete="off">
+                                <input [(ngModel)]="gender" type="radio" class="custom-control-input" name="gender"
+                                    value="female" autocomplete="off">
                                 <span class="custom-control-label"> Female </span>
                             </label>
                             <br />
@@ -128,7 +130,7 @@
                                 autocomplete="off" />
                         </div>
                         <label>Grade</label>
-                        <select id="grade" name="grade" autocomplete="off" required="false">
+                        <select [(ngModel)]="grade" id="grade" name="grade" autocomplete="off" required="false">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -178,7 +180,7 @@
                             class="form-control form-control-lg" placeholder="Fixed Number" required="false"
                             title="Enter your Fixed number" autocomplete="off" />
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <input [(ngModel)]="description" name="description" type="text"
                             class="form-control form-control-lg" placeholder="Status" required="false"
                             title="Enter your status" autocomplete="off" />
