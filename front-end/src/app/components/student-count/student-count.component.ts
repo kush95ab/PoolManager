@@ -12,4 +12,6 @@ export class StudentCountComponent implements OnInit {
   ngOnInit() {
   }
 
+  student_count:number=23;
+  free_space:number=50-this.student_count;
 }
