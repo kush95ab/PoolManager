@@ -22,10 +22,12 @@ export const routes: Routes = [
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'event', component: EventsComponent },
   { path: 'member', component: MembersComponent },
+
   { path: 'student', component: StudentProfileComponent },
   { path: 'coach', component: CoachProfileComponent },
   { path: 'poolmanager', component: PoolmanagerProfileComponent },
   { path: '**', component: Error404Component }
+
 
 ];
 
