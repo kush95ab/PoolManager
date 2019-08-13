@@ -30,26 +30,26 @@
             <!-- Middle Column -->
             <div class="col-sm-6" >
                 <div class="row" >
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="min-height: 50px;">
                         <app-student-count></app-student-count>
                     </div>
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                         <app-ph-val></app-ph-val>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style=" min-height:30%">
                         <app-water-level></app-water-level>
                     </div>
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                         <app-chlorine-val></app-chlorine-val>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
             <!-- Right Column -->
-            <div class="col-sm-3 sidenav">
+            <div class="col-sm-3 sidenav" style=" min-height:30%">
 
                 <app-calander></app-calander>
                 <app-event-bar></app-event-bar>
@@ -91,40 +91,6 @@
 
     </div>
 
-    <!-- Footer -->
-
-    <!-- <script>
-        $(document).ready(function () {
-            // Initialize Tooltip
-            $('[data-toggle="tooltip"]').tooltip();
-
-            // Add smooth scrolling to all links in navbar + footer link
-            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-
-                // Make sure this.hash has a value before overriding default behavior
-                if (this.hash !== "") {
-
-                    // Prevent default anchor click behavior
-                    event.preventDefault();
-
-                    // Store hash
-                    var hash = this.hash;
-
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 900, function () {
-
-                        // Add hash (#) to URL when done scrolling (default click behavior)
-                        window.location.hash = hash;
-                    });
-                } // End if
-            });
-        })
-    </script> -->
-
-</body>
-
 <!-- Add the app footer section -->
 <app-footer></app-footer>
+</body>

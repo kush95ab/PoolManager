@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpBackendRequestService } from '../../services/http-backend-request.service';
 import { Auth } from '../../entities/auth';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -15,6 +14,8 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
+  login:boolean=true;
+
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit {
   submitForm() {
     const authData = new Auth(this.username, this.password);
     this.authService.loginUser(authData);
+    
+    
   }
 
 }

@@ -7,6 +7,7 @@ import { HttpEnum } from '../utils/httpEnum';
 import { HttpBackendRequestService } from './http-backend-request.service';
 import { Auth } from '../entities/auth';
 import { UserService } from './user.service';
+import { log } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class AuthenticationService {
 
   private userAuth: User;
 
-  constructor(private router: Router, 
-    private httpBackendRequest: HttpBackendRequestService, 
+  constructor(private router: Router,
+    private httpBackendRequest: HttpBackendRequestService,
     private userService: UserService) { }
 
   ngOnInit() {
@@ -32,49 +33,58 @@ export class AuthenticationService {
   }
 
   getLoggingUser(authData: Auth) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
-    .subscribe(
-      (result) => {
-        if (result === null) {
-          alert('Login credentials are not correct.');
-        } else {
-          this.setUser(result);
-          console.log("Login credentials ok");
-        }
-      },
-      (err) => alert('Error occured.. Contact Administrations!')
-    );
+    let promise = new Promise((resolve, reject) => {
+
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
+        .subscribe(
+          (result) => {
+            if (result === null) {
+              alert('Login credentials are not correct.');
+              reject();
+            } else {
+              resolve();
+              alert(result)
+              this.setUser(result);
+              console.log("Login credentials ok");
+            }
+          },
+          (err) => {
+            alert('Error occured.. Contact Administrations!');
+          }
+        );
+    })
+    return promise;
   }
 
   loginUser(authData: Auth) {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
-    .subscribe(
-      (result) => {
-        if (result === null) {
-          alert('Login credentials are not correct.');
-        } else {
-          this.setUser(result);
-          this.setLoggedUserObject();
-          console.log("Login credentials ok")
-          this.router.navigate(['/home']);
-        }
-      },
-      (err) => alert('Error occured.. Contact Administrations!')
-    );
+      .subscribe(
+        (result) => {
+          if (result === null) {
+            alert('Login credentials are not correct.');
+          } else {
+            this.setUser(result);
+            this.setLoggedUserObject();
+            console.log("Login credentials ok")
+            this.router.navigate(['/home']);
+          }
+        },
+        (err) => alert('Error occured.. Contact Administrations!')
+      );
   }
 
   setLoggedUserObject() {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETUSER, this.userAuth)
-    .subscribe(
-      (result) => {
-        if (result === null) {
-          // alert('error.');
-        } else {
-          this.userService.setCurrentUser(this.userAuth ,result);
-        }
-      },
-      (err) => alert('Error occured.. Contact Administrations!')
-    );
+      .subscribe(
+        (result) => {
+          if (result === null) {
+            // alert('error.');
+          } else {
+            this.userService.setCurrentUser(this.userAuth, result);
+          }
+        },
+        (err) => alert('Error occured.. Contact Administrations!')
+      );
   }
 
   isUserLogged(): Boolean {

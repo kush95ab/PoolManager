@@ -2,6 +2,9 @@ import { User } from '../entities/user';
 import { Student } from '../entities/student';
 import { Coach } from '../entities/coach';
 import { Poolmanager } from '../entities/poolmanager';
+import { Event } from '../entities/event';
+import { Skill } from '../entities/skill';
+
 export class Utils {
 
     constructor() { }
@@ -22,7 +25,7 @@ export class Utils {
 
         const student = new Student();
 
-        
+
         student.studentId = dataStudent.studentId;
         student.studentSchool = dataStudent.studentSchool;
         student.studentGrade = dataStudent.studentGrade;
@@ -50,7 +53,7 @@ export class Utils {
 
         const coach = new Coach();
 
-        
+
         coach.coachNIC = dataCoach.coachNIC;
         coach.coachOccupation = dataCoach.coachOccupation;
         coach.coachExperience = dataCoach.coachExperience;
@@ -75,7 +78,7 @@ export class Utils {
 
         const poolmanager = new Poolmanager();
 
-        
+
         poolmanager.poolmanagerNIC = dataPoolmanager.poolmanagerNIC;
         poolmanager.poolmanagerExperience = dataPoolmanager.poolmanagerExperience;
 
@@ -86,8 +89,8 @@ export class Utils {
         poolmanager.poolmanagerGender = dataPoolmanager.poolmanagerGender;
         poolmanager.poolmanagerDOB = dataPoolmanager.poolmanagerDOB;
         poolmanager.poolmanagerAddress = dataPoolmanager.poolmanagerAddress;
-        poolmanager.poolmanagerCellPhone = dataPoolmanager.poolmanagerCellphone;
-        poolmanager.poolmanagerFixedPhone = dataPoolmanager.poolmanagerFixedphone;
+        poolmanager.poolmanagerCellPhone = dataPoolmanager.poolmanagerCellPhone;
+        poolmanager.poolmanagerFixedPhone = dataPoolmanager.poolmanagerFixedPhone;
         poolmanager.poolmanagerEmail = dataPoolmanager.poolmanagerEmail;
         poolmanager.poolmanagerImgLink = dataPoolmanager.poolmanagerImgLink;
         poolmanager.poolmanagerDescription = dataPoolmanager.poolmanagerDescription;
@@ -96,5 +99,32 @@ export class Utils {
 
     }
 
+    public static convertDatabaseEventToEvent(dataEvent: any): Event {
 
+        const event = new Event();
+
+        event.eventId = dataEvent.eventId;
+        event.eventName = dataEvent.eventname;
+        event.eventDate = dataEvent.eventDate.substring(0,10);
+        event.eventStart_time = dataEvent.eventStart_time.substring(0,5);
+        event.eventEnd_time = dataEvent.eventEnd_time.substring(0,5);
+        event.eventCoordinator = dataEvent.eventCoordinator;
+        event.eventContact = dataEvent.eventContact;
+        event.eventDescription = dataEvent.eventDescription;
+
+        return event;
     }
+
+    public static convertDatabaseSkillToSkill(dataSkill: any): Skill {
+
+        const skill = new Skill();
+
+        skill.skillId = dataSkill.skillId;
+        skill.skillName = dataSkill.skillName;
+        skill.skillDescription = dataSkill.skillDescription;
+
+        return skill;
+    }
+
+
+}

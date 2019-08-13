@@ -1,10 +1,127 @@
-
 <!-- Add the app header section -->
-<app-header></app-header>
+<div id="background">
+	<app-header></app-header>
+	<div>
+		<div class="row">
+			<div class="col">
+				<div class="container-fluid ">
+					<div class="card">
+						<div class="card-header">
+							<h1>Past Events</h1>
+						</div>
+						<div *ngFor="let event of pastEvents">
+							<div class="card-body" data-toggle="collapse" data-target="#collapseOne"
+								aria-expanded="true" aria-controls="collapseOne">
+								<div class="col-lg-3">
+									<h5>{{getDateTime(event.eventDate)}}</h5>
+								</div>
+								<div class="col-lg-9">
+									<h5>{{event.eventName}}</h5>
+								</div>
+							</div>
+							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+								data-parent="#accordion">
+								<div class="card-body">
+									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+									richardson ad
+									squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+									quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+									on it
+									squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+									helvetica,
+									craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+									excepteur
+									butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
+									synth
+									nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+								</div>
 
-<p>
-  events works!
-</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="container-fluid">
+					<div class="card">
+						<div class="card-header">
 
-<!-- Add the app footer section -->
-<app-footer></app-footer>
+							<h1>Today Events</h1>
+						</div>
+						<div *ngFor="let event of todayEvents">
+
+							<div class="row">
+								<div class="card-body">
+
+									<div class="col-lg-3">
+										<h3>{{getDateTime(event.eventDate)}}</h3>
+									</div>
+									<div class="col-lg-6">
+										<h3>{{event.eventName}}</h3>
+
+										<p>{{event.eventDescription}}</p>
+									</div>
+									<div class="col-lg-3">
+										<h3></h3>
+										{{event.eventStart_time}} to
+										{{event.eventEnd_time}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="container-fluid">
+					<div class="card">
+						<div class="card-header">
+							<h1>Upcomming Events</h1>
+						</div>
+						<div *ngFor="let event of upcomingEvents">
+							<div class="card-body">
+								<div class="col-lg-3">
+									<h5>{{getDateTime(event.eventDate)}}</h5>
+								</div>
+								<div class="col-lg-9">
+									<h5>{{event.eventName}}</h5>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="accodion">
+		<div class="card">
+			<div class="card-header" id="headingOne">
+				<h5 class="mb-0">
+					<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+						aria-controls="collapseOne">
+						Collapsible Group Item #1
+					</button>
+				</h5>
+			</div>
+
+			<!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> -->
+			<div class="card-body" id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+				data-parent="#accordion">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+			<!-- </div> -->
+		</div>
+
+		<!-- Add the app footer section -->
+	
+	</div>
+	<app-footer></app-footer>
+</div>

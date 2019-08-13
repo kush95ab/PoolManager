@@ -1,13 +1,13 @@
 // Entity class for coach
 
 export class Coach {
-    userId:string;
+    userId:number;
     coachFname: string;
     coachFullname:string;
     coachLname: string;
     coachAddress: string;
-    coachCellPhone: string;
-    coachFixedPhone: string;
+    coachCellPhone: number;
+    coachFixedPhone: number;
     coachEmail: string;
     coachImgLink: string;
     coachDescription: string;
@@ -34,7 +34,7 @@ export class Coach {
     
    
     
-    public getUserId(): string {
+    public getUserId(): number {
         return this.userId;
     }
 
@@ -53,11 +53,11 @@ export class Coach {
         return this.coachAddress;
     }
 
-    public getCellPhone(): string {
+    public getCellPhone(): number {
         return this.coachCellPhone;
     }
     
-    public getFixedPhone(): string {
+    public getFixedPhone(): number {
         return this.coachFixedPhone;
     }
     public getEmail(): string {
@@ -95,7 +95,7 @@ export class Coach {
     }
    
   
-    public setUserId(id: string) {
+    public setUserId(id: number) {
         this.userId = id;
     }
 
@@ -115,11 +115,11 @@ export class Coach {
         this.coachAddress = address;
     }
 
-    public setCellPhone(phone: string) {
+    public setCellPhone(phone: number) {
         this.coachCellPhone = phone;
     }
 
-    public setFixedPhone(phone: string) {
+    public setFixedPhone(phone: number) {
         this.coachFixedPhone = phone;
     }
 

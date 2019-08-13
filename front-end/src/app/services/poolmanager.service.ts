@@ -4,6 +4,8 @@ import { HttpBackendRequestService } from './http-backend-request.service';
 import { HttpEnum } from '../utils/httpEnum';
 import { Utils } from '../utils/utils';
 import { Router } from '@angular/router';
+import { realpath } from 'fs';
+import { log } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +13,13 @@ import { Router } from '@angular/router';
 export class PoolmanagerService {
 
   poolmanagerList: Poolmanager[] = new Array();
-  
+  currentPoolmanager: Poolmanager;
+
   constructor(private router: Router,
     private httpBackendRequest: HttpBackendRequestService) { }
 
-    // get all the coachs' details
-  getPoolmanagers() {
+  // get all the poolmanagers' details
+  getPoolmanagers(): Poolmanager[] {
     this.poolmanagerList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETPOOLMGRS, null)
       .subscribe(
@@ -32,33 +35,57 @@ export class PoolmanagerService {
             }
           }
         },
-        (err) => alert('getting companies error occured.. !')
+        () => alert('getting Poolmanagers error occured.. !')
       );
+      console.log("getting pool managers at poolmanagerservice");
+      
+      console.log(this.poolmanagerList);
+      
+    return this.poolmanagerList;
   }
 
   // insert poolmanager details
   insertPoolmanager(poolmanager) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDPOOLMGR, poolmanager)
-      .subscribe(
-        (result) => {
-          alert("Successfully Student Inserted.");
-          this.router.navigate(['/login']);
-        },
-        (err) => alert('Error occured.. Contact Administrations!')
-      );
+    console.log(poolmanager);
+    
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDPOOLMGR, poolmanager)
+        .subscribe(
+          (result) => {
+            alert("Successfully Pool Manager Inserted.");
+            this.router.navigate(['/login']);
+            resolve(result);
+          },
+          (err) => {
+            alert('Error occured.. Contact Administrations!');
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  // return the selected poolmanager from the list
+  getCurrentPoolmanager() {
+    return this.currentPoolmanager;
+  }
+
+  //keep a record of currently selected poolmanager
+  setCurrentPoolmanager(poolmanager: Poolmanager) {
+    this.currentPoolmanager = poolmanager;
   }
 
   // delete poolmanager details
   deletePoolmanager(poolmanager: Poolmanager) {
-    console.log("delete poolmanager called on " + poolmanager.poolmanagerNIC);
+    console.log("delete poolmanager called on " + poolmanager.poolmanagerFullname);
 
     this.httpBackendRequest.realizarHttpPost(HttpEnum.DELPOOLMGR, poolmanager).subscribe(
-      (result) => {
+      () => {
         alert("Poolmanager Successfully Deleted.");
       },
 
       (err) => {
-        alert("cannot delete poolmanager" + err);
+        alert("cannot delete poolmanager");
         console.log(err);
       }
     );
