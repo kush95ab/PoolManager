@@ -26,10 +26,12 @@ export const routes: Routes = [
   { path: 'event', component: EventsComponent },
   { path: 'calander', component: CalanderComponent },
   { path: 'member', component: MembersComponent },
+
   { path: 'student', component: StudentProfileComponent },
   { path: 'coach', component: CoachProfileComponent },
   { path: 'poolmanager', component: PoolmanagerProfileComponent },
   { path: '**', component: Error404Component }
+
 
 ];
 

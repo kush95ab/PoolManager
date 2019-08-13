@@ -64,6 +64,8 @@ export const config = {
   appId: "1:87194304985:web:44da20c42386dde5"
 }
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,9 +90,11 @@ export const config = {
     ChlorineValComponent,
     EventsComponent,
     MembersComponent,
+
     StudentProfileComponent,
     CoachProfileComponent,
     PoolmanagerProfileComponent,
+
   ],
   imports: [
     AngularFireModule.initializeApp(config),

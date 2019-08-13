@@ -24,13 +24,19 @@
     "@types/jquery": "^3.3.31",
     "a": "^2.1.2",
     "angular-font-awesome": "^3.1.2",
+<<<<<<< HEAD
     "angular-popper": "^2.0.1",
+=======
+    "angular-fusioncharts": "^3.0.2",
+    "angular-popper": "^2.0.0",
+>>>>>>> b4fa366440ef06e618482365322e2789868fadc7
     "angularfire2": "^5.1.1",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.0",
     "cors": "^2.8.4",
     "firebase": "^6.3.5",
     "font-awesome": "^4.7.0",
+<<<<<<< HEAD
     "jquery": "^3.4.1",
     "ngx-bootstrap": "^5.1.1",
     "ngx-progressbar": "^2.1.1",
@@ -40,6 +46,14 @@
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
     "zone.js": "^0.10.1"
+=======
+    "fusioncharts": "^3.13.5",
+    "jquery": "^3.3.1",
+    "ngx-bootstrap": "^3.1.4",
+    "popper.js": "^1.14.6",
+    "rxjs": "^6.2.2",
+    "zone.js": "^0.8.26"
+>>>>>>> b4fa366440ef06e618482365322e2789868fadc7
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.802.1",
