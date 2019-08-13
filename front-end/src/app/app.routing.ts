@@ -7,10 +7,13 @@ import { HelpComponent } from './pages/help/help.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { EventsComponent } from './pages/Admin/events/events.component';
+import { CalanderComponent } from './components/calander/calander.component';
 import { MembersComponent } from './pages/Admin/members/members.component';
 import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 import { CoachProfileComponent } from './pages/coach-profile/coach-profile.component';
 import { PoolmanagerProfileComponent } from './pages/poolmanager-profile/poolmanager-profile.component';
+
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +24,7 @@ export const routes: Routes = [
   { path: 'help', component: HelpComponent },
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'event', component: EventsComponent },
+  { path: 'calander', component: CalanderComponent },
   { path: 'member', component: MembersComponent },
   { path: 'student', component: StudentProfileComponent },
   { path: 'coach', component: CoachProfileComponent },

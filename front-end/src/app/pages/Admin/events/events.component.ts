@@ -10,7 +10,7 @@ import { Event } from '../../../entities/event';
 import { Auth } from '../../../entities/auth';
 import { Router } from '@angular/router';
 import { promise } from 'protractor';
-import { log, print } from 'util';
+// import { log, print } from 'util';
 import { from } from 'rxjs';
 
 
