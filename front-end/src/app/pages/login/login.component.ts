@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     const authData = new Auth(this.username, this.password);
     this.authService.loginUser(authData);
     
-    
   }
 
 }

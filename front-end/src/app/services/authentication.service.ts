@@ -15,6 +15,7 @@ import { log } from 'util';
 export class AuthenticationService {
 
   private userAuth: User;
+  private loggeduserId:number;
 
   constructor(private router: Router,
     private httpBackendRequest: HttpBackendRequestService,
@@ -28,8 +29,19 @@ export class AuthenticationService {
     return this.userAuth;
   }
 
+  getCurrentuser():number{
+    console.log("getting logged user id");
+    
+    this.loggeduserId=parseInt(localStorage.getItem("loggeduserId"));
+    console.log(this.loggeduserId);
+    return this.loggeduserId;
+  }
+
   setUser(userAuth: Object) {
     this.userAuth = Utils.convertDatabaseUserToUser(userAuth);
+    localStorage.setItem("loggeduserId",this.userAuth.userId.toString());
+    console.log("current user is set to", this.userAuth.userId.toString());
+    
   }
 
   getLoggingUser(authData: Auth) {
@@ -73,7 +85,8 @@ export class AuthenticationService {
       );
   }
 
-  setLoggedUserObject() {
+  setLoggedUserObject(){
+
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETUSER, this.userAuth)
       .subscribe(
         (result) => {
@@ -106,5 +119,5 @@ export class AuthenticationService {
     this.userService.currentUser = null;
     this.router.navigate(['/login']);
   }
-
+ 
 }

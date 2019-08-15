@@ -16,7 +16,6 @@
 </div>
     <!-- </div> -->
     <div class="collapse navbar-collapse" id="myNavbar">
-
         <ul class="navbar-nav nav-pills nav-left" style="padding: 0px; margin-bottom: 0px" role="tablist">
             <li class="nav-item"> <a class="nav-link" href="#"></a>
             </li>
@@ -27,6 +26,11 @@
             <li class="nav-item"><a class="nav-link" href="/help">HELP</a></li>
             <li class="nav-item"><a class="nav-link" href="/sign-up">SIGNUP</a></li>
             <li class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
-        </ul>
+            <li class="nav-item"><a class="nav-link" href="/">You are logged in as {{cUser}}</a></li>
+            <!-- <li *ngIf="!signedin" class="nav-item"><a class="nav-link" href="/sign-up">SIGNUP</a></li>
+            <li *ngIf="!signedin" class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
+            <li *ngIf="signedin" class="nav-item"><a class="nav-link" href="/"></a>You are logged in as {{cUser}}</li>
+             -->
+          </ul>
     </div>
 </nav>
