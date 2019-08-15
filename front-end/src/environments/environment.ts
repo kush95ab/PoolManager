@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl : "http://localhost:3000/"
+  firebaseconfig:{
+    apiKey: "AIzaSyCQhFUZmxb7hH0m__Np6Ag4o98p84vwRho",
+    authDomain: "poolmanager-3956f.firebaseapp.com",
+    databaseURL: "https://poolmanager-3956f.firebaseio.com",
+    projectId: "poolmanager-3956f",
+    storageBucket: "poolmanager-3956f.appspot.com",
+    messagingSenderId: "514160956908",
+    appId: "1:514160956908:web:68eab1c699c86333"
+  }
+  };
+//  apiBaseUrl : "http://localhost:3000/"
 };
 
 /*

@@ -27,6 +27,7 @@ import { StudentCountComponent } from './components/student-count/student-count.
 import { WaterLevelComponent } from './components/water-level/water-level.component';
 import { PhValComponent } from './components/ph-val/ph-val.component';
 import { ChlorineValComponent } from './components/chlorine-val/chlorine-val.component';
+import { StudentCountService } from './services/studentCount.service';
 
 /*pages */
 import { LoginComponent } from './pages/login/login.component';
@@ -90,17 +91,21 @@ export const config = {
     ChlorineValComponent,
     EventsComponent,
     MembersComponent,
-
+    StudentCountComponent,
+    
     StudentProfileComponent,
     CoachProfileComponent,
     PoolmanagerProfileComponent,
+    
 
   ],
   imports: [
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.firebaseconfig),
     AngularFireDatabaseModule,
+
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     AngularFontAwesomeModule,
@@ -110,7 +115,8 @@ export const config = {
     // PopupModule
     // Observable
   ],
-  providers: [DatePipe,AngularFireAuth, HttpBackendRequestService, AuthenticationService,AngularFireDatabaseModule,AngularFireAuthModule],
+  providers: [DatePipe,AngularFireAuth, HttpBackendRequestService,StudentCountService, AuthenticationService,AngularFireDatabaseModule],
+
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
