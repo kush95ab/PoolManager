@@ -132,7 +132,7 @@ export class UserService {
   }
 
   // Delete user from database
-  deleteUser(user: User) {
+  deleteUser(user:User) {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.DELETEUSER, user)
       .subscribe(
         (result) => {

@@ -33,14 +33,14 @@ Utils.prototype.getSqlSelectAllUsers = function () {
 // SQL query for select user by user name
 Utils.prototype.getSqlAuth = function (userName) {
 
-    var sqlSelectUser = "SELECT * FROM  user WHERE user_name like '" + userName + "'";
+    var sqlSelectUser = "SELECT * FROM  user WHERE user_name like '" + userName + "'" +"and isdelete = "+"'N'";
     return sqlSelectUser;
 };
 
 // SQL query for select user by user Id
 Utils.prototype.getSqlSelectUser = function (userId) {
 
-    var sqlSelectUser = "SELECT * FROM  user WHERE user_Id = " + userId;
+    var sqlSelectUser = "SELECT * FROM  user WHERE user_Id = " + userId +"and isdelete = "+"'N'";
     return sqlSelectUser;
 };
 
@@ -68,7 +68,8 @@ Utils.prototype.getUpdateSqlUser = function (user) {
 // SQL query for delete user by id
 Utils.prototype.getDeleteSqlUser = function (user) {
 
-    var sqlDeleteUser = "DELETE FROM user WHERE user_Id=" + user.userId;
+    var sqlDeleteUser = "UPDATE user SET isdelete = "+"'Y'"+" WHERE user_Id=" + user.userId;
+    // var sqlDeleteUser = "DELETE FROM user WHERE user_Id=" + user.userId;
     return sqlDeleteUser;
 };
 
@@ -78,21 +79,21 @@ Utils.prototype.getDeleteSqlUser = function (user) {
 // SQL query for select all students
 Utils.prototype.getSqlSelectAllStudents = function () {
 
-    var sqlSelectStudent = "SELECT * FROM student";
+    var sqlSelectStudent = "SELECT * FROM student WHERE isdelete = "+"'N'";
     return sqlSelectStudent;
 };
 
 // SQL query for select student by student id
 Utils.prototype.getSqlSelectStudent = function (studentId) {
 
-    var sqlSelectStudent = "SELECT * FROM student WHERE student_Id=" + studentId;
+    var sqlSelectStudent = "SELECT * FROM student WHERE student_Id=" + studentId +"and isdelete = "+"'N'";
     return sqlSelectStudent;
 };
 
 // SQL query for select student by student first name
 Utils.prototype.getSqlSelectStudentByFname = function (studentFname) {
 
-    var sqlSelectStudent = "SELECT * FROM  student WHERE first_name like '" + studentFname + "'";
+    var sqlSelectStudent = "SELECT * FROM  student WHERE first_name like '" + studentFname + "'" +"and isdelete = "+"'N'";
     return sqlSelectStudent;
 };
 
@@ -142,15 +143,16 @@ Utils.prototype.getUpdateSqlStudent = function (student) {
         " img_link='" + student.studentImgLink + "'," +
         " school='" + student.studentSchool + "'," +
         " status='" + student.studentDescription + "' WHERE" +
-        " student_Id=" + student.studentId;
+        " student_Id=" + student.studentId +"and isdelete = "+"'N'";
     return sqlUpdateStudent;
 };
 
 
 // SQL query for delete student by id
-Utils.prototype.getDeleteSqlStudent = function (student) {
+Utils.prototype.getDeleteSqlStudent = function (student) { 
 
-    var sqlDeleteStudent = "DELETE FROM student WHERE student_Id=" + student.studentId;
+    var sqlDeleteStudent = "UPDATE student SET isdelete = "+"'Y'"+" WHERE user_Id=" + student.userId;
+    // var sqlDeleteStudent = "DELETE FROM student WHERE student_Id=" + student.studentId;
     return sqlDeleteStudent;
 };
 
@@ -160,21 +162,21 @@ Utils.prototype.getDeleteSqlStudent = function (student) {
 // SQL query for select all coaches
 Utils.prototype.getSqlSelectAllCoaches = function () {
 
-    var sqlSelectCoach = "SELECT * FROM coach";
+    var sqlSelectCoach = "SELECT * FROM coach WHERE isdelete = "+"'N'";
     return sqlSelectCoach;
 };
 
 // SQL query for select coach by coach id
 Utils.prototype.getSqlSelectCoach = function (userId) {
 
-    var sqlSelectCoach = "SELECT * FROM coach WHERE user_Id=" + userId;
+    var sqlSelectCoach = "SELECT * FROM coach WHERE user_Id=" + userId +"and isdelete = "+"'N'";
     return sqlSelectCoach;
 };
 
 // SQL query for select coach by coach first name
 Utils.prototype.getSqlSelectCoachByFname = function (coachFname) {
 
-    var sqlSelectCoach = "SELECT * FROM  coach WHERE first_name like '" + coachFname + "'";
+    var sqlSelectCoach = "SELECT * FROM  coach WHERE first_name like '" + coachFname + "' and isdelete = "+"'N'";
     return sqlSelectCoach;
 };
 
@@ -221,7 +223,7 @@ Utils.prototype.getUpdateSqlCoach = function (coach) {
         " email='" + coach.coachEmail + "'," +
         " img_link='" + coach.coachImgLink + "'," +
         " status='" + coach.coachDescription + "' WHERE" +
-        " user_Id=" + coach.userId;
+        " user_Id=" + coach.userId +"and isdelete = "+"'N'";
     return sqlUpdateCoach;
 };
 
@@ -229,7 +231,8 @@ Utils.prototype.getUpdateSqlCoach = function (coach) {
 // SQL query for delete coach by userid
 Utils.prototype.getDeleteSqlCoach = function (coach) {
 
-    var sqlDeleteCoach = "DELETE FROM coach WHERE user_Id=" + coach.userId;
+    var sqlDeleteCoach = "UPDATE coach SET isdelete = "+"'Y'"+" WHERE user_Id=" + coach.userId;
+    // var sqlDeleteCoach = "DELETE FROM coach WHERE user_Id=" + coach.userId;
     return sqlDeleteCoach;
 };
 
@@ -239,21 +242,21 @@ Utils.prototype.getDeleteSqlCoach = function (coach) {
 // SQL query for select all poolmanagers
 Utils.prototype.getSqlSelectAllPoolmanagers = function () {
 
-    var sqlSelectPoolmanager = "SELECT * FROM poolmanager";
+    var sqlSelectPoolmanager = "SELECT * FROM poolmanager WHERE isdelete = "+"'N'";
     return sqlSelectPoolmanager;
 };
 
 // SQL query for select poolmanager by poolmanager userIid
 Utils.prototype.getSqlSelectPoolmanager = function (userId) {
 
-    var sqlSelectPoolmanager = "SELECT * FROM poolmanager WHERE user_Id=" + userId;
+    var sqlSelectPoolmanager = "SELECT * FROM poolmanager WHERE user_Id=" + userId +"and isdelete = "+"'N'";
     return sqlSelectPoolmanager;
 };
 
 // SQL query for select poolmanager by poolmanager first name
 Utils.prototype.getSqlSelectPoolmanagerByFname = function (poolmanagerFname) {
 
-    var sqlSelectPoolmanager = "SELECT * FROM  poolmanager WHERE first_name like '" + poolmanagerFname + "'";
+    var sqlSelectPoolmanager = "SELECT * FROM  poolmanager WHERE first_name like '" + poolmanagerFname + "' and isdelete = "+"'N'";
     return sqlSelectPoolmanager;
 };
 
@@ -300,7 +303,7 @@ Utils.prototype.getUpdateSqlPoolmanager = function (poolmanager) {
         " email='" + poolmanager.poolmanagerEmail + "'," +
         " img_link='" + poolmanager.poolmanagerImgLink + "'," +
         " status='" + poolmanager.poolmanagerDescription + "' WHERE" +
-        " user_Id=" + poolmanager.userId;
+        " user_Id=" + poolmanager.userId +"and isdelete = "+"'N'";
     return sqlUpdatePoolmanager;
 };
 
@@ -308,7 +311,8 @@ Utils.prototype.getUpdateSqlPoolmanager = function (poolmanager) {
 // SQL query for delete poolmanager by id
 Utils.prototype.getDeleteSqlPoolmanager = function (poolmanager) {
 
-    var sqlDeletePoolmanager = "DELETE FROM poolmanager WHERE user_Id=" + poolmanager.userId;
+    var sqlDeletePoolmanager = "UPDATE poolmanager SET isdelete = "+"'Y'"+" WHERE user_Id=" + poolmanager.userId;
+    // var sqlDeletePoolmanager = "DELETE FROM poolmanager WHERE user_Id=" + poolmanager.userId;
     return sqlDeletePoolmanager;
 };
 
@@ -349,7 +353,7 @@ Utils.prototype.getUpdateSqlSkill = function (skill) {
 };
 
 // SQL query for delete skill by id
-Utils.prototype.getDeleteSqlSkill = function (skill) {
+Utils.prototype. SqlSkill = function (skill) {
 
     var sqlDeleteSkill = "DELETE FROM skill WHERE skill_Id=" + skill.skillId;
     return sqlDeleteSkill;

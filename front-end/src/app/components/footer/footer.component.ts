@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { routerNgProbeToken, RouterModule } from '@angular/router/src/router_module';
+// import { routerNgProbeToken, RouterModule } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-footer',

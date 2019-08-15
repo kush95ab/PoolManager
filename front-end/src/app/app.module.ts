@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from "angularfire2/database";
-import { AngularFirestoreModule } from 'angularfire2/firestore'; 
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { PopupModule } from 'ng2-opd-popup'
  
@@ -101,6 +102,8 @@ export const config = {
   imports: [
     AngularFireModule.initializeApp(environment.firebaseconfig),
     AngularFireDatabaseModule,
+
+    AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     BrowserModule,
@@ -113,6 +116,7 @@ export const config = {
     // Observable
   ],
   providers: [DatePipe,AngularFireAuth, HttpBackendRequestService,StudentCountService, AuthenticationService,AngularFireDatabaseModule],
+
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

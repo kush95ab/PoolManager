@@ -14,6 +14,8 @@ export const environment = {
     appId: "1:514160956908:web:68eab1c699c86333"
   }
   };
+//  apiBaseUrl : "http://localhost:3000/"
+};
 
 /*
  * In development mode, to ignore zone related error stack frames such as

@@ -1,11 +1,12 @@
 export const environment = {
   production: true,
-  firebaseconfig:{
-    apiKey: 'AIzaSyAw1dPGrmqwa63g0tRtU7rmSJnFn1Zki8A',
-    authDomain: 'e-ment-chat.firebaseapp.com',
-    databaseURL: 'https://e-ment-chat.firebaseio.com',
-    projectId: 'e-ment-chat',
-    storageBucket: 'e-ment-chat.appspot.com',
-    messagingSenderId: '748618873530'
+  firebase: {
+    apiKey: "AIzaSyCITSncT0JQSy-eiJyIN9udrEsmna0Scqc",
+    authDomain: "project-demo-7dce8.firebaseapp.com",
+    databaseURL: "https://project-demo-7dce8.firebaseio.com",
+    projectId: "project-demo-7dce8",
+    storageBucket: "",
+    messagingSenderId: "87194304985"
+    // appId: "1:87194304985:web:44da20c42386dde5"
   }
 };

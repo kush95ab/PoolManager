@@ -71,3 +71,14 @@ router.use(function (req, res, next) {
 /* All our routes will be prefixed with '/api' */
 app.use('/api', router);
 app.use('/api', require('./app/routers/backend-routers'));
+
+
+app.post('/signup', (req, res) => {
+    console.log("User signup post request")
+    ctrlUser.createUser(req, res)
+  })
+  
+  app.post('/authenticate', (req, res) => {
+    console.log("User authenticate post request")
+    ctrlUser.isAuthenticated(req, res)
+  })

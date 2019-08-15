@@ -157,3 +157,8 @@ div.gallery {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+  #background{
+    min-height:100%;
+    position:relative;
+}

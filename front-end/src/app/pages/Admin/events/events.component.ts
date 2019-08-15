@@ -10,9 +10,10 @@ import { Event } from '../../../entities/event';
 import { Auth } from '../../../entities/auth';
 import { Router } from '@angular/router';
 import { promise } from 'protractor';
-import { log, print } from 'util';
+// import { log, print } from 'util';
 import { from } from 'rxjs';
-
+// import { Popup } from 'ng2-opd-popup';
+ 
 
 @Component({
   selector: 'app-events',
@@ -52,7 +53,10 @@ export class EventsComponent implements OnInit {
 
 
 
+// popupOnclick(){
+//   this.popup.show();
 
+// }
   //converting date format
   getDateTime(s: string): string {
     let date = new Date(s);
