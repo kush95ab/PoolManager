@@ -223,6 +223,7 @@ export class SignUpComponent implements OnInit {
     return user;
   }
 
+
   createStudent() {
     let student = new Student();
 

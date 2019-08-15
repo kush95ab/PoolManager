@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentCountComponent implements OnInit {
 
+  
+  student_count:number;
+  free_space:number;
+
   constructor() { }
 
   ngOnInit() {
+    this.student_count=23;
+    this.free_space=50-this.student_count;
+    
   }
 
-  student_count:number=23;
-  free_space:number=50-this.student_count;
 }

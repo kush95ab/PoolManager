@@ -65,6 +65,28 @@ export class PoolmanagerService {
     return promise;
   }
 
+
+  
+
+  // update poolmanager details
+  updatePoolmanager(poolmanager:Poolmanager) {
+    let promise = new Promise((resolve, reject) => {
+      this.httpBackendRequest.realizarHttpPost(HttpEnum.UPDATEPOOLMGR, poolmanager)
+        .subscribe(
+          (result) => {
+            alert("Successfully Poolmanager Inserted.");
+            // this.router.navigate(['/login']);
+            resolve(result);
+          },
+          (err) => {
+            alert('student insert error occured.. Contact Administrations!');
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
   // return the selected poolmanager from the list
   getCurrentPoolmanager() {
     return this.currentPoolmanager;

@@ -33,6 +33,7 @@
     "firebase": "^6.3.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
+    "ng2-opd-popup": "^1.1.21",
     "ngx-bootstrap": "^5.1.1",
     "ngx-progressbar": "^2.1.1",
     "of": "^1.0.0",

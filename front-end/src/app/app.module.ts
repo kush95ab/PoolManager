@@ -12,8 +12,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
+// import { PopupModule } from 'ng2-opd-popup'
+ 
 /*components*/
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -107,6 +107,7 @@ export const config = {
     BsDatepickerModule.forRoot(),
     HttpClientModule,
     FormsModule,
+    // PopupModule
     // Observable
   ],
   providers: [DatePipe,AngularFireAuth, HttpBackendRequestService, AuthenticationService,AngularFireDatabaseModule,AngularFireAuthModule],

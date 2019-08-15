@@ -59,7 +59,7 @@ export class StudentService {
   }
 
    // update student details
-   updateStudent(student) {
+   updateStudent(student:Student) {
     let promise = new Promise((resolve, reject) => {
       this.httpBackendRequest.realizarHttpPost(HttpEnum.UPDATESTUDENT, student)
         .subscribe(

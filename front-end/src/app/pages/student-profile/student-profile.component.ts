@@ -61,10 +61,10 @@ export class StudentProfileComponent implements OnInit {
     this.imageAddress = HttpEnum.BASEURL + this.image;
   }
 
-  UpdateStudent() {
+  UpdateStudent(std:Student) {
 
-    let student = this.createStudent();
-    console.log(student);
+    let student = this.createStudent(std);
+    console.log("this is ",student);
     this.studentService.updateStudent(student).then(() => {
 
       alert("Registration Successful.");
@@ -73,7 +73,7 @@ export class StudentProfileComponent implements OnInit {
       alert("Error occured. " + error);
     })
     
-    // this.router.navigate(['/member']);
+    // this.router.navigate(['/member'] );
   }
   // function for image uploading
   selectFile(event) {
@@ -92,26 +92,27 @@ export class StudentProfileComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
-  createStudent() {
+  createStudent(std:Student) {
     let student = new Student();
 
-    student.setFirstName(this.fname);
-    student.setLastName(this.lname);
-    student.setFullName(this.fullname);
-    student.setAddress(this.address);
-    student.setEmail(this.email);
-    student.setCellPhone(this.cellphone);
-    student.setFixedPhone(this.fixedphone);
-    student.setImgLink(this.image);
-    student.setDescription(this.description);
-    student.setDob(this.dob);
-    student.setGender(this.gender);
+    student.setFirstName(std.studentFname);
+    student.setLastName( std.studentLname);
+    student.setFullName( std.studentFullname);
+    student.setAddress( std.studentAddress);
+    student.setEmail( std.studentEmail);
+    student.setCellPhone( std.studentCellPhone);
+    student.setFixedPhone( std.studentFixedPhone);
+    student.setImgLink( std.studentImgLink);
+    student.setDescription( std.studentDescription);
+    student.setDob( std.studentDOB);
+    student.setGender( std.studentGender);
 
-    student.setStudentId(this.studentId);
-    student.setStudentSchool(this.school);
-    student.setParentName(this.parentname);
-    student.setStudentGrade(this.grade);
+    student.setStudentId( std.studentId);
+    student.setStudentSchool( std.studentSchool);
+    student.setParentName( std.studentParentName);
+    student.setStudentGrade( std.studentGrade);
 
+    console.log(student, "in create student");
     return student;
   }
 

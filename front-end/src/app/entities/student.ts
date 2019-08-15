@@ -141,7 +141,7 @@ export class Student {
     }
 
     public setEmail(email: string) {
-        this.studentEmail = email;
+        this.studentEmail = email; 
     }
 
     public setImgLink(imglink: string) {
