@@ -10,16 +10,15 @@ import { log } from 'util';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) { 
+  constructor(private authService: AuthenticationService) {
     console.log("nav bar working");
     // console.log("this is current user", this.currentuser());
     if (this.authService.isUserLogged) {
       console.log("user logged in  nav");
       this.signedin = true;
       this.cUser = this.authService.getCurrentuser();
-      
-    console.log("this is current cuser ", this.cUser);
-    }else{
+      console.log("this is current c user ", this.cUser);
+    } else {
       this.signedin = false;
     }
   }
@@ -27,7 +26,9 @@ export class NavBarComponent implements OnInit {
   signedin: boolean = false;
 
   ngOnInit() {
-    
+this.cUser;
+console.log("init");
+
   }
 
   logout() {

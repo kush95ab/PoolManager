@@ -17,9 +17,9 @@ export class CalanderComponent implements OnInit {
   selectMonth: number;
   selectYear: number;
   monthAndYear: any;
-
-  months:string[];
-
+  months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+   
+  
   ngOnInit() {
     var today = new Date();
     var currentMonth = today.getMonth();
@@ -29,8 +29,7 @@ export class CalanderComponent implements OnInit {
     console.log(selectYear);
     console.log(selectMonth);
     
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var monthAndYear = document.getElementById("monthAndYear");
+     this.monthAndYear = document.getElementById("monthAndYear");
     this.showCalendar(currentMonth, currentYear);
 
   }
@@ -69,6 +68,7 @@ export class CalanderComponent implements OnInit {
 
     // filing data about month and in the page via DOM.
     // this.monthAndYear.innerHTML = +56*months[month] + " " + year;///////////////////////////////////////////////*********** */
+    this.monthAndYear.innerHTML =  year;///////////////////////////////////////////////*********** */
     this.selectYear = year.toString();
     this.selectMonth = month.toString();
 
