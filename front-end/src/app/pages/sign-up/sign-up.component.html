@@ -37,8 +37,10 @@
         <div class="card-header">
             <h2 class="mb-1">REGISTRATION FORM</h2>
             <p>Please enter your user information.</p>
+        
         </div>
-        <form class="row" #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" ngNativeValidate>
+        <!-- <form class="row" #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" ngNativeValidate> -->
+        <form class="row" #signUpForm="ngForm" (ngSubmit)="submitForm()" ngNativeValidate>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 px-5">
                 <div class="mx-auto mt-4 border" style="width: 200px; height: 200px; overflow: hidden;">
                     <img src="{{imageAddress}}" width="200" />

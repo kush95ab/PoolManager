@@ -6,7 +6,8 @@ import { User } from '../../entities/user';
 import { Student } from '../../entities/student';
 import { Coach } from '../../entities/coach';
 import { Poolmanager } from '../../entities/poolmanager';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user.service'
+// import { UserService } from '../../shared/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { StudentService } from '../../services/student.service';
 import { CoachService } from '../../services/coach.service';
@@ -23,6 +24,8 @@ import { promise } from 'protractor';
 })
 export class SignUpComponent implements OnInit {
 
+  res: any;
+
   // all user details
   fname: string;
   lname: string;
@@ -35,10 +38,10 @@ export class SignUpComponent implements OnInit {
   fixedphone: number;
   description: string;
   image: string;
-  
-signup:boolean=true;
-  
-usertype: string;
+
+  signup: boolean = true;
+
+  usertype: string;
   username: string;
   password: string;
   confirm: string;
@@ -71,11 +74,31 @@ usertype: string;
     private poolmanagerService: PoolmanagerService) { }
 
   ngOnInit() {
-    this.image = "default.jpg";
-    this.imageAddress = HttpEnum.BASEURL + this.image;
+    console.log("in ngonit");
+
+    //   this.image = "default.jpg";
+    //   this.imageAddress = HttpEnum.BASEURL + this.image;
+
+
+    //   this.res = this.userService.response.subscribe(val => {
+    //     console.log(val.operationType);
+    //     if (val == "Email not verified") {
+    //       console.log(val.operationType);
+    //       // this.Warning_Email(val);
+
+    //     } else if (val.operationType == "signIn") {
+    //       console.log(val.operationType);
+    //       // this.Success();
+    //     }
+    //     else if (val.code == "auth/email-already-in-use" || "auth/invalid-email" || "auth/operation-not-allowed" || "auth/weak-password") {
+    //       console.log(val.operationType);
+    //       // this.Warning(val.message);
+    //     }
+
+    //   });
   }
 
-  //selecting user type
+  //selecting user type functions
 
   studentsignup() {
     this.Studentsignup = true;
@@ -99,16 +122,29 @@ usertype: string;
     this.choosen = true;
     this.usertype = "P";
   }
+
   submitForm() {
+    console.log(user);
+
+    var user = new User()
+    user.userName = this.username;
+    user.userEmail = this.email;
+    user.userPassword = this.password;
+    user.userType = this.usertype;
+    // console.log(user.userName, user.userEmail, user.userPassword, user.userType);
+
+    // this.userService.insertUser(user);
+    // console.log("submit works");
+
     let userresult = this.userService.insertUser(this.createUser()).then(() => {
 
       let auth = new Auth(this.username, this.password);
       this.authService.getLoggingUser(auth).then(() => {
 
 
-        switch (this.usertype) {
+        switch (this.usertype) {   
           case 'S': {
-            
+
             let student = this.createStudent();
             student.setUserId(this.authService.getUser().userId);
             console.log(student);
@@ -165,7 +201,7 @@ usertype: string;
   // function for image uploading
   selectFile(event) {
     this.selectedFiles = event.target.files;
-  } 
+  }
 
   uploadFile() {
     this.currentFileUpload = this.selectedFiles.item(0);
@@ -186,6 +222,7 @@ usertype: string;
     user.userType = this.usertype;
     return user;
   }
+
 
   createStudent() {
     let student = new Student();

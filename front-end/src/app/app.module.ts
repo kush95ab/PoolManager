@@ -6,9 +6,14 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {AngularFireModule} from 'angularfire2';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
-
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { PopupModule } from 'ng2-opd-popup'
+ 
 /*components*/
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -22,6 +27,7 @@ import { StudentCountComponent } from './components/student-count/student-count.
 import { WaterLevelComponent } from './components/water-level/water-level.component';
 import { PhValComponent } from './components/ph-val/ph-val.component';
 import { ChlorineValComponent } from './components/chlorine-val/chlorine-val.component';
+import { StudentCountService } from './services/studentCount.service';
 
 /*pages */
 import { LoginComponent } from './pages/login/login.component';
@@ -46,8 +52,18 @@ import { DatePipe } from '@angular/common';
 import { HttpBackendRequestService } from './services/http-backend-request.service';
 import { AuthenticationService } from './services/authentication.service';
 import { environment } from 'src/environments/environment';
+import { AngularFireAuth } from '@angular/fire/auth';
+// import { Observable } from 'rxjs/Observable';
 
-
+export const config = {
+  apiKey: "AIzaSyCITSncT0JQSy-eiJyIN9udrEsmna0Scqc",
+  authDomain: "project-demo-7dce8.firebaseapp.com",
+  databaseURL: "https://project-demo-7dce8.firebaseio.com",
+  projectId: "project-demo-7dce8",
+  storageBucket: "project-demo-7dce8.appspot.com",
+  messagingSenderId: "87194304985",
+  appId: "1:87194304985:web:44da20c42386dde5"
+}
 
 
 
@@ -75,23 +91,32 @@ import { environment } from 'src/environments/environment';
     ChlorineValComponent,
     EventsComponent,
     MembersComponent,
-
+    StudentCountComponent,
+    
     StudentProfileComponent,
     CoachProfileComponent,
     PoolmanagerProfileComponent,
+    
 
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseconfig),
+    AngularFireDatabaseModule,
+
+    AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     AngularFontAwesomeModule,
     BsDatepickerModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    // PopupModule
+    // Observable
   ],
-  providers: [DatePipe, HttpBackendRequestService, AuthenticationService],
-  bootstrap: [AppComponent]
+  providers: [DatePipe,AngularFireAuth, HttpBackendRequestService,StudentCountService, AuthenticationService,AngularFireDatabaseModule],
+
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

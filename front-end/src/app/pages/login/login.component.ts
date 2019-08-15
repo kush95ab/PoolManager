@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpBackendRequestService } from '../../services/http-backend-request.service';
 import { Auth } from '../../entities/auth';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -26,6 +25,7 @@ export class LoginComponent implements OnInit {
   submitForm() {
     const authData = new Auth(this.username, this.password);
     this.authService.loginUser(authData);
+    
   }
 
 }

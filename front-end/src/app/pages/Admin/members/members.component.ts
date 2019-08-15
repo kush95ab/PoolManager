@@ -82,6 +82,8 @@ export class MembersComponent implements OnInit {
     private poolmanagerService: PoolmanagerService) { }
 
   ngOnInit() {
+    console.log("run ngonit");
+
     this.retreveStudents();
     this.retreveCoaches();
     this.retrevePoolManagers();
@@ -124,39 +126,74 @@ export class MembersComponent implements OnInit {
   //  functions of delete members from database
 
   deleteStudent(std: Student) {
-    this.deleteAccount = true;
-    // if (this.confirmed) {
+    // this.deleteAccount = true;
+    this.confirmed = confirm("Are you sure you want to close this account permanently?");
+    // console.log("after : ", this.confirmed);
+    if (this.confirmed) {
+
       this.studentService.deleteStudent(std);
+      this.userService.deleteUser(this.createUserfromstd(std));
+
+      // console.log("before ", this.students);
+      for (var i = 0; i < this.students.length; i++) {
+        if (this.students[i]["studentId"] = std.studentId) {
+          this.students.splice(i, 1);
+        }
+      }
+
+      // console.log("after ",this.students);
       this.deleteAccount = false;
-      this.confirmed=false;
-    // } else {
+      this.confirmed = false;
+    } else {
       this.deleteAccount = false;
-      this.confirmed=false;
-    // }
+      this.confirmed = false;
+    }
+    this.ngOnInit();
   }
 
   deleteCoach(coach: Coach) {
-    this.deleteAccount = true;
+    this.confirmed = confirm("Are you sure you want to close this account permanently?");
+   
+    // this.deleteAccount = true;
     if (this.confirmed) {
       this.coachService.deleteCoach(coach);
+      this.userService.deleteUser(this.createUserfromCoach(coach))
+      
+      for (var i = 0; i < this.coaches.length; i++) {
+        if (this.coaches[i]["coachNIC"] = coach.coachNIC) {
+          this.coaches.splice(i, 1);
+        }
+      }
+
       this.deleteAccount = false;
-      this.confirmed=false;
+      this.confirmed = false;
     } else {
       this.deleteAccount = false;
-      this.confirmed=false;
+      this.confirmed = false;
     }
+    this.ngOnInit();
   }
 
   deletePoolmanager(plmgr: Poolmanager) {
-    this.deleteAccount = true;
+    // this.deleteAccount = true;
+    this.confirmed = confirm("Are you sure you want to close this account permanently?");
+
     if (this.confirmed) {
       this.poolmanagerService.deletePoolmanager(plmgr);
+      this.userService.deleteUser(this.createUserfromPoolmgr(plmgr));
+      
+      for (var i = 0; i < this.poolmanagers.length; i++) {
+        if (this.poolmanagers[i]["poolmanagerNIC"] = plmgr.poolmanagerNIC) {
+          this.poolmanagers.splice(i, 1);
+        }
+      }
       this.deleteAccount = false;
-      this.confirmed=false;
+      this.confirmed = false;
     } else {
       this.deleteAccount = false;
-      this.confirmed=false;
+      this.confirmed = false;
     }
+    this.ngOnInit();
   }
 
 
@@ -193,6 +230,36 @@ export class MembersComponent implements OnInit {
   }
   viewPoolmanager(poolmanager: Poolmanager) {
     this.poolmanagerService.setCurrentPoolmanager(poolmanager);
+  }
+
+  // for sending user objects to user delete functions
+  createUserfromstd(std: Student) {
+    var usr = new User;
+    usr.userId = std.userId;
+    usr.userName = "";
+    usr.userPassword = "";
+    usr.userType = "S";
+    usr.userEmail = std.studentEmail;
+    return usr;
+  }
+
+  createUserfromCoach(std: Coach) {
+    var usr = new User;
+    usr.userId = std.userId;
+    usr.userName = "";
+    usr.userPassword = "";
+    usr.userType = "S";
+    usr.userEmail = std.coachEmail;
+    return usr;
+  }
+  createUserfromPoolmgr(std: Poolmanager) {
+    var usr = new User;
+    usr.userId = std.userId;
+    usr.userName = "";
+    usr.userPassword = "";
+    usr.userType = "S";
+    usr.userEmail = std.poolmanagerEmail;
+    return usr;
   }
 
 }

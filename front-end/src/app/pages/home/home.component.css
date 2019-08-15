@@ -18,7 +18,8 @@
 
   body {
     font: 400 15px/1.8 Lato, sans-serif;
-    color: rgb(rgb(40, 27, 214))
+    color: rgb(rgb(40, 27, 214));
+    min-height:100%;  
     /* color: rgb(250, 255, 255); */
   }
   h3, h4 {
