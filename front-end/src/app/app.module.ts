@@ -53,6 +53,7 @@ import { HttpBackendRequestService } from './services/http-backend-request.servi
 import { AuthenticationService } from './services/authentication.service';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { EventProfileComponent } from './pages/event-profile/event-profile.component';
 // import { Observable } from 'rxjs/Observable';
 
 export const config = {
@@ -96,6 +97,7 @@ export const config = {
     StudentProfileComponent,
     CoachProfileComponent,
     PoolmanagerProfileComponent,
+    EventProfileComponent,
     
 
   ],

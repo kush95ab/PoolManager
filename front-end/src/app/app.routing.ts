@@ -12,6 +12,8 @@ import { MembersComponent } from './pages/Admin/members/members.component';
 import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 import { CoachProfileComponent } from './pages/coach-profile/coach-profile.component';
 import { PoolmanagerProfileComponent } from './pages/poolmanager-profile/poolmanager-profile.component';
+import { Profile } from 'selenium-webdriver/firefox';
+import { EventProfileComponent } from './pages/event-profile/event-profile.component';
 
 
 
@@ -30,6 +32,7 @@ export const routes: Routes = [
   { path: 'student', component: StudentProfileComponent },
   { path: 'coach', component: CoachProfileComponent },
   { path: 'poolmanager', component: PoolmanagerProfileComponent },
+  { path: 'create-event' , component : EventProfileComponent},
   { path: '**', component: Error404Component }
 
 

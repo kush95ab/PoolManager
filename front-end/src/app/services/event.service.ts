@@ -17,12 +17,20 @@ export class EventService {
   upcommingEvents: Event[] = new Array();
   pastEvents: Event[] = new Array();
   todayEvents: Event[] = new Array();
-  // currentEvent: Event;
+  currentEvent: Event;
 
   constructor(private router: Router,
     private httpBackendRequest: HttpBackendRequestService) { }
 
   // get all the events' details
+
+
+  setCurrentEvent(event: Event) {
+    this.currentEvent = event;
+  }
+  getCurrentEvent() {
+    return this.currentEvent;
+  }
 
   getDatesEvents() {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETEVENTS, null);
@@ -139,4 +147,19 @@ export class EventService {
       }
     );
   }
+
+  createEvent(eve: Event): Event {
+    
+    let event = new Event;
+    
+    event.eventName = eve.eventName;
+    event.eventDescription = eve.eventDescription;
+    event.eventStart_time = eve.eventStart_time;
+    event.eventEnd_time = eve.eventEnd_time;
+    event.eventCoordinator = eve.eventCoordinator;
+    event.eventContact = eve.eventContact;
+    
+    return event;
+  }
+  
 }

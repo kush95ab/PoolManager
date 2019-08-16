@@ -1,0 +1,101 @@
+<!-- Add the app header section -->
+<app-header></app-header>
+
+<div class="container-fluid my-5">
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <form class="row" #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" ngNativeValidate>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 px-5">
+                <!-- <div class="mx-auto mt-4 border" style="width: 200px; height: 200px; overflow: hidden;">
+                    <img src="{{imageAddress}}" width="200" />
+                </div>
+
+                <label class="btn btn-default mt-2">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <button class="btn btn-success btn-block" [disabled]="!selectedFiles"
+                    (click)="uploadFile()">Upload</button> -->
+            </div>
+            <h3>Create event</h3>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="card-body">
+                    <div *ngIf="profile" class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.EventId" name="EventId" type="text"
+                            class="form-control form-control-lg" placeholder="Event ID" required="true" title="Event Id"
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventName" name="eventName"
+                            type="text" class="form-control form-control-lg" placeholder="Event Name" required="true"
+                            title="Enter your Event name" autocomplete="off" />
+                    </div>
+                    <!-- <div class="form-group">
+                <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventLname" name="lname" type="text" class="form-control form-control-lg"
+                  placeholder="Last Name" required="false" title="Enter your last name" autocomplete="off" />
+              </div> -->
+                    <div class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventDescription" name="description"
+                            type="text" class="form-control form-control-lg" placeholder="Event Description"
+                            required="true" title="Event description " autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventDate" name="eventdate"
+                            type="date" class="form-control form-control-lg" placeholder="Date Of Event" required="true"
+                            title="Enter your birthday" value="01/01/2010" autocomplete="off" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventStart_time" name="starttime"
+                            type="text" class="form-control form-control-lg" placeholder="Event start time"
+                            required="true" title="Event start time" autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventEnd_time" name="endtime"
+                            type="text" class="form-control form-control-lg" placeholder="Event end time"
+                            required="true" title="Event end time" autocomplete="off" />
+                    </div>
+
+                </div>
+
+
+
+                <!-- <div class="form-group">
+                        <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventAddress" name="address" type="text"
+                            class="form-control form-control-lg" placeholder="Address" required="false"
+                            title="Enter your address" autocomplete="off" />
+                    </div> -->
+                <div class="form-group">
+                    <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventCoordinator" name="eventCoordinator"
+                        type="text" class="form-control form-control-lg" placeholder="Coordinator" required="false"
+                        title="Coordinator name" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <input [disabled]="!editEvent&&profile" [(ngModel)]="event.eventContact" name="cellphone" type="tel"
+                        pattern="^\d{10}$" class="form-control form-control-lg" placeholder="contact Number"
+                        required="false" title="Enter your mobile number" autocomplete="off" />
+                </div>
+
+                <div style="float: right">
+                    <p data-placement="top" data-toggle="tooltip" title="Edit">
+                        <!-- edit button -->
+                        <button *ngIf="profile" class="btn btn-primary btn-xs"
+                            (click)="!editEvent&&profile=true">Edit<span
+                                class="glyphicon glyphicon-pencil"></span></button>
+                        <!-- update event button -->
+                        <span> <button *ngIf="profile" [disabled]="!editEvent&&profile" type="button"
+                                class="btn btn-success btn-xs" (click)="updateEvent(event)">Save</button></span>
+
+                        <!-- create new event button -->
+                        <span><button *ngIf="newEvent" [disabled]="!editEvent&&profile" type="button"
+                                class="btn btn-success btn-xs" (click)="insertEvent(event)">Save</button></span>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

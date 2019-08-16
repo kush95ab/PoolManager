@@ -67,7 +67,7 @@ export class StudentProfileComponent implements OnInit {
     console.log("this is ",student);
     this.studentService.updateStudent(student).then(() => {
 
-      alert("Registration Successful.");
+      alert("student Successfully updated.");
       this.router.navigate(['/member']);
     }).catch(error => {
       alert("Error occured. " + error);
